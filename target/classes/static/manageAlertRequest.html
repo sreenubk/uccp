@@ -1,0 +1,222 @@
+<div class="container" ng-controller="manageAlertRequestCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Manage Alert Request</h2>  
+	 </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Current Cohort
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row" ng-if ="addCohort">
+                <label for="cohortDetail" class="col-sm-4">Cohort Name: {{addCohort.name}}</label>
+                <label for="cohortDetail" class="col-sm-4">Cohort Description: {{addCohort.cohortdescription}}</label>
+          	  </div>
+          	   <div class="row" ng-if ="!addCohort">
+                <label for="cohortDetail" class="col-sm-4">Cohort Name: All</label>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Alert Request List
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+			<div class="form-group" style = "margin-bottom: 25px;">
+			  <label for="input2" class="col-sm-2 control-label" style = "margin-top:10px; color:blue;">Search By Status</label>
+			  <div class="col-sm-6">
+			  <select id="input2" class="form-control statusDrpDwn" ng-change="getdetails(userselected)" ng-model="userselected">
+			   <option>All</option>
+			   <option>STAGED</option>
+			    <option>COMPLETE</option>
+			     <option>INTERFACE ERROR</option>
+			     <option>PENDING INTERFACE</option>
+			  </select>
+			  </div>
+			</div><br/>	
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf" style="cursor:pointer;">
+                <tr>
+                 <th></th>
+                  <th>
+	                  <a class = "reqTableHeader" href="" ng-click="sortType = 'reqReqtID'; sortReverse = !sortReverse">
+			          	ID 
+			          	<span ng-show="sortType == 'reqReqtID'"><span ng-show="!sortReverse" class="fa fa-caret-down"></span><span ng-show="sortReverse" class="fa fa-caret-up"></span></span>
+			            
+			          </a>
+                  </th>
+                  <th>
+                  	<a class = "reqTableHeader" href="" ng-click="sortType = 'createdDate'; sortReverse = !sortReverse">
+			          	Created Date 
+			            <span ng-show="sortType == 'createdDate' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortType == 'createdDate' && sortReverse" class="fa fa-caret-up"></span>
+			        </a>
+			       </th>
+                  <th>
+                  	<a class = "reqTableHeader" href="" ng-click="sortType = 'reasoncode'; sortReverse = !sortReverse">
+			          	Reason Code
+			            <span ng-show="sortType == 'reasoncode' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortType == 'reasoncode' && sortReverse" class="fa fa-caret-up"></span>
+			        </a>
+                  </th>
+                  <th>
+                  	<a class = "reqTableHeader" href="" ng-click="sortType = 'fName'; sortReverse = !sortReverse">
+			          	Client Name 
+			            <span ng-show="sortType == 'fName' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortType == 'fName' && sortReverse" class="fa fa-caret-up"></span>
+				    </a>
+                  </th>
+                  <!--th>
+                  	<a class = "reqTableHeader" href="" ng-click="sortType = 'selectedLName'; sortReverse = !sortReverse">
+			          	Last Name
+			            <span ng-show="sortType == 'selectedLName' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortType == 'selectedLName' && sortReverse" class="fa fa-caret-up"></span>
+			        </a>
+                  </th-->
+                  <!-- th>
+                  	<a class = "reqTableHeader" href="" ng-click="sortType = 'selectedRuleID'; sortReverse = !sortReverse">
+			          	Rule ID 
+			            <span ng-show="sortType == 'selectedRuleID' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortType == 'selectedRuleID' && sortReverse" class="fa fa-caret-up"></span>
+			        </a>
+                  </th -->
+                  <th>
+                  	<a class = "reqTableHeader" href="" ng-click="sortType = 'status'; sortReverse = !sortReverse">
+			          	Status
+			            <span ng-show="sortType == 'status' && !sortReverse" class="fa fa-caret-down"></span>
+			            <span ng-show="sortType == 'status' && sortReverse" class="fa fa-caret-up"></span>
+			        </a>
+                  </th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody ng-repeat="x in existRegData | orderBy:sortType:sortReverse">
+                <tr>
+                  <td>
+                  	<button  class="btn btn-default btn-xs" data-toggle="collapse" class="accordion-toggle" ng-if="x.expanded" ng-click="x.expanded = false"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+              		<button  class="btn btn-default btn-xs" data-toggle="collapse" class="accordion-toggle" ng-if="!x.expanded" ng-click="x.expanded = true"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
+              	  </td>
+                  <td class="{{x.reqReqtID}}name" data-title="Cohort Name" ng-model = "selectedReqID">{{x.reqReqtID}}</td>
+                  <td class="{{x.cohortid}}createdDate" data-title="Created Date" ng-model = "selectedCreatedDate">{{x.createdDate}}
+                  <td class="{{x.cohortid}}reasoncode" data-title="Reason Code" ng-model = "selectedRasonCode"><a href = ""  ng-click="selectedReasonCode(x.reasoncode)">{{x.reasoncode}}</a>
+                  <td class="{{x.cohortid}}getFullName" data-title="Client Name" ng-model = "selectedClientName"><a  ng-click="showPersonData(x.sourceSys,x.sourceSysID)" style="cursor:pointer;">{{x.fName + " " + x.lname}}</a>
+                  <!-- td class="{{x.cohortid}}ruleID" data-title="Rule ID" ng-model = "selectedRuleID">{{x.ruleID}}
+                 <!--  <td class="{{x.cohortid}}cohortdescription" data-title="Client ID" ng-model = "selectedClientID">{{x.clientID}}
+                  <td class="{{x.cohortid}}" data-title="Cohort ID" ng-model = "selectCohID"><a ng-click = "getcohortDetails(x.cohortID)" style="cursor:pointer;">{{x.cohortID}}</a>-->
+                  <td class="{{x.cohortid}}status" data-title="Status" ng-model = "selectedStatus"><span>{{x.status}}</span></td>
+                  <td class="{{x.cohortid}}actions" data-title="Actions">
+                      <button type="submit" ng-click="approveRequest(x.reqReqtID)" class="btn btn-default"  ng-disabled ="x.status == 'COMPLETE'">Approve</button>
+              		  <button type="reset" ng-click="deleteRequest(x.reqReqtID)" class="btn btn-default">Delete</button>
+              		  <a ng-click="viewStatusHistory(x.reqReqtID)" style="cursor:pointer; padding-left: 10px;" >Status History</a>
+              		  <a ng-click="sendStatusHistory(x.reqReqtID)" style="cursor:pointer;padding-left: 10px;">Send History</a>
+                  </td>
+                </tr>
+               <tr ng-if="x.expanded" ng-repeat-end="">
+               		 <td colspan="10" style ="border-style :hidden !important;">
+               		 	<div class=" col-sm-12" style = "border: 1px solid gray;border-radius: 4px !important;">
+               		 	 	<div class=" col-sm-4">
+		   			 			<div class=" col-sm-12">
+		    			 			<div class=" col-sm-8">
+		    			 				<span style = "font-weight:bold;">Rule ID:</span>
+		    			 			</div>
+		    			 			<div class="col-sm-4">
+		    			 				<span class="{{x.cohortid}}ruleID" data-title="Rule ID" ng-model = "selectedRuleID">{{x.ruleID}}</span>
+		    			 			</div>
+		   			 			 </div>
+		   			 			 <div class=" col-sm-12">
+		    			 			<div class="col-sm-8">
+		    			 				<span style = "font-weight:bold;">Short Description:</span>
+		    			 			</div>
+		    			 			<div class="col-sm-4">
+		    			 				<span>Value</span>
+		    			 			</div>
+		   			 			 </div>
+		   			 		</div>
+		   			 		<div class=" col-sm-8">
+		   			 			<div class=" col-sm-12">
+			   			 			<div class="col-sm-6">
+					 					<span style = "font-weight:bold;">Reason Description:</span>
+					 				</div>
+						 			<div class="col-sm-6">
+						 				<span>Value</span>
+						 			</div>
+				 				</div>
+				 			 	<div class="col-sm-12">
+					 				<div class="col-sm-6">
+					 					<span style = "font-weight:bold;">Created By User:</span>
+					 				</div>
+						 			<div class="col-sm-6">
+						 				<span>{{x.createdByUser}}</span>
+						 			</div>
+				 			 	</div>
+				 			 	<div class="col-sm-12">
+					 				<div class="col-sm-6">
+					 					<span style = "font-weight:bold;">Comments:</span>
+					 				</div>
+						 			<div class="col-sm-6">
+						 				<span>{{x.comments}}</span>
+						 			</div>
+				 			 	</div>
+		   			 		</div>
+		   			 	</div>
+           			</td>
+		           	<!--td colspan="6" style ="border-style :hidden !important;">
+			 			<div class=" col-sm-12">
+				 			<div class="col-sm-4">
+				 				<span>Reason Description:</span>
+				 			</div>
+				 			<div class="col-sm-8">
+				 				<span>Value</span>
+				 			</div>
+			 			 </div>
+			 			 <div class="col-sm-12">
+				 			<div class="col-sm-4">
+				 				<span>Created By User:</span>
+				 			</div>
+				 			<div class="col-sm-8">
+				 				<span>Value</span>
+				 			</div>
+			 			 </div>
+			 			 <div class="col-sm-12">
+				 			<div class="col-sm-4">
+				 				<span>Comments:</span>
+				 			</div>
+				 			<div class="col-sm-8">
+				 				<span>Value</span>
+				 			</div>
+			 			 </div>
+		           	</td-->
+          	   </tr>
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

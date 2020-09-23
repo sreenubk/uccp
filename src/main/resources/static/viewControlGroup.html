@@ -1,0 +1,132 @@
+<div class="container" ng-controller="viewControlGroupCtrl">
+
+      
+      <div class="row toprow">
+		  <h2 class="col-sm-5">View Control Group  </h2>   
+		  <a href="" class="col-sm-3 martop30 txtright"  ng-click="addTransaction()"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Transaction</a>
+	  	  <a href="" class="col-sm-4 martop30 txtright"  ng-click="useCategoryExistTransaction()"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Existing Transaction</a>
+	  </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row">
+                <label for="ctrlGroup" class="col-sm-4">Control Group Name: {{addGroup.controlgroupname}}</label>
+                <label for="ctrlGroup" class="col-sm-4">Created By: {{addGroup.createdby}}</label>
+                <label for="ctrlGroup" class="col-sm-4">Last Updated By: {{addGroup.lastupdatedby}}</label>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Transactions
+          
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th></th>
+                  <th>Transaction Name</th>
+                  <th>Transaction Type</th>
+                  <th>Default Access Type</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="tranBody">
+           
+              </tbody>
+            </table>
+            
+                  
+          </div>
+        </div>
+      </div><!-- /Transactions -->
+         <!--  div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transactionTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th></th>
+                  <th>Transaction Name</th>
+                  <th>Transaction Type</th>
+                  <th>Default Access Type</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="tranBody">
+            <!--  	<tr ng-if="existingGroup==true" ng-repeat="x in existTranDataLocal" id="#{{x.transactionid}}" class="{{x.transactionid}}">
+              		<td><button class="btn btn-default btn-xs" data-toggle="collapse" class="accordion-toggle" data-target="#tr{{x.transactionid}}" >
+                   <i style="" title="Open Constrains" class="fa fa-sort" aria-hidden="true" ng-click=""></i></button></td>
+              		<td>{{x.transactionname}}</td>
+              		<td>{{x.transactiontype}}</td>
+              		<td>{{x.defaultaccess}}</td>
+              		<td>
+						<span style="float:right"> <i style="margin-right:10px;cursor:pointer;" title="Delete" class="fa fa-times" aria-hidden="true" ng-click="delTran(x.transactionid)"></i> 
+                  		 <i style="cursor:pointer;" title="Add Attribute Constraints" class="fa fa-check-square-o" aria-hidden="true" ng-click="addAttribute(x.transactionid)"></i> </span> 
+					</td>
+              	</tr>
+				<tr ng-if="existingGroup==true" ng-repeat="y in existAttrDataLocal" >
+					<td colspan="12" class="hiddenRow"> 
+						<div class="accordian-body collapse" id="tr{{currentExistingTransactionId}}"> 
+							<table class="table table-striped" style="width: 96%;margin: 10px auto;"> 
+								<thead> 
+									<tr>
+									  <th>Attribute Name</th> 
+									  <th>Attribute Value</th> 
+									  <th>Access Constraint Type</th> 
+									  <th>Actions</th> 
+									</tr> 
+								</thead> 
+								<tbody class="tranAttr">
+									<tr id="tr{{currentExistingTransactionId}}att{{y.attributeconstraintid}}">
+										<td class="attributenamelocal">{{y.attributename}}</td> 
+										<td class="attributevaluelocal">{{y.attributevalue}}</td> 
+                   						<td class="accessconstrainttypelocal">{{y.accessconstrainttype}}</td> 
+                   						<td><span style="float:right"> 
+                   							<i style="margin-right:10px;cursor:pointer;" title="Delete" class="fa fa-times" aria-hidden="true" ng-click="delAttr(y.attributeconstraintid,currentExistingTransactionId)"></i> 
+                   							<i style="cursor:pointer;" title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="openAttrEdit(y.attributeconstraintid,currentExistingTransactionId)"></i>
+                   						</span></td>
+									</tr>
+								</tbody> 
+							</table>
+						</div>
+					</td>
+				</tr> 
+                 --> 
+              <!--</tbody>
+              </table-->
+            
+                  
+         <!-- </div>
+        </div-->
+      </div><!-- /Transactions -->
+
+
+     
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

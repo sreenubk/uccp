@@ -1,0 +1,105 @@
+<style>
+  .typeahead-demo .custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #f9f9f9;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #868686;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+</style>
+
+<div class="modal-header">
+  <h3 class="modal-title">Add Authorization Group</h3>
+</div>
+<form name="authNewForm">
+<div class="modal-body">
+
+<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+
+	<div class="form-group">
+		<label class="radio-inline">
+	      <input type="radio" name="optAuth" ng-click="newAuthNameCheck()" checked="checked">Create New Authorization Group
+	    </label>
+	    <label class="radio-inline">
+	      <input type="radio" name="optAuth" ng-click="existAuthNameCheck()">Use Existing Authorization Group
+	    </label>
+	   
+	</div>
+	
+	<div class="form-group newAuthNameFrm">
+		  <label for="newAuthName">Create New Authorization Group:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="newAuthName" name="newAuthName">
+	</div>
+	
+	<div class="form-group hide existAuthNameFrm">
+		  <label for="existAuthName">Use Existing Authorization Group:</label>
+		  <select class="form-control" id="existAuthName" ng-model="existAuthName"  name="existAuthName">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in authGroupLists" value="{{x.authorizationgroupid}},{{x.authGroupName}},{{x.controlgroupname}},{{x.cosdabaccontrolgroup}},{{x.jobid}},{{x.organisationunit}},{{x.organisationname}},{{x.securityrole}},{{x.job}},{{x.users}}">{{x.authGroupName}}</option>
+		 </select>	
+	</div>
+	
+	<div class="form-group">
+	  	<label for="ctrlGroup">Control Group Name:</label>
+	  	<input type="text" class="form-control" autocomplete="off" id="ctrlGroupName"  typeahead-no-results="noResults" ng-model="ctrlGroupName"  name="ctrlGroupName" uib-typeahead="grp as grp.controlgroupname for grp in groupNames | filter:{controlgroupname:$viewValue}">
+		 <div ng-if="noResults" class="noresult">
+		  No Results Found!
+		</div>
+	 </div>
+	 <div class="form-group">
+		  <label for="ctrlGroup">Organization Unit:</label>
+		  <select class="form-control" id="org" ng-model="org"  name="org">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in orgUnits" value="{{x.organisationunitid}}">{{x.name}}</option>
+		 </select>
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">Role:</label>
+		  <select class="form-control" id="role" ng-model="role"  name="role">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in roleLists" value="{{x.rolename}}">{{x.rolename}}</option>
+		 </select>	
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">Job:</label>
+		  <select class="form-control" id="job" ng-model="job"  name="job">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in jobLists" value="{{x.jobid}}">{{x.rolename}}</option>
+		  </select>
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">User:</label>
+		  <select class="form-control" id="user" ng-model="user"  name="user">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in userLists" value="{{x.username}}">{{x.username}}</option>
+		  </select>
+	</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit"  ng-click="saveAuthGroup(newAuthName,existAuthName,ctrlGroupName,org,role,job,user); (authDone==true)? $close():console.log('dsfsdf')">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+</form>

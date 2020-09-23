@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Target Details</h3>
+</div>
+<form name="editTargetForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="targetDetail">Target Name:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedTargetName"  required placeholder="selectedTargetName" name="newTargetName">
+  </div>
+  <div class="form-group">
+  	<label for="targetDetail">Target Address:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedTargetAddress"  required placeholder="{{selectedTargetAddress}}" name="newTargetAddr">
+  </div>
+  <div class="form-group">
+  	<label for="targetDetail">Target Alternate Address:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedTargetAltAddress"  required placeholder="{{selectedTargetAltAddress}}" name="newTargetAltAddr">
+  </div>
+  <div class="form-group">
+  	<label for="targetDetail">Target Description:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedTargetDesc"  required placeholder="{{selectedTargetDesc}}" name="newTargetDesc">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editTargetSave(selectedTargetName,selectedTargetAddress,selectedTargetAltAddress,selectedTargetDesc);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

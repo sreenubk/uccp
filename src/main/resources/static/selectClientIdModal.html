@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h3 class="modal-title">Select Client ID</h3>
+</div>
+<form name="selectCohortForm">
+<div class="modal-body">
+<div class="form-group">
+  <div class="panel panel-default">
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Client ID</th>
+                  <th>Name</th>
+                  <th>DOB</th>
+                  <th>Gender</th>
+                  <th>Address</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-class="{selected:$index==selectedRow}" data-ng-click="rowHighlightedClient($index,x.clientID)" data-ng-repeat="x in myPersonData" ng-model = "selectedClientID">
+                  <td class="{{x.clientID}}clientID" data-title="Client ID" value = "x.clientID" name = "clientIdselected">{{x.clientID}}</td>
+                  <td class="{{x.clientID}}customerName" data-title="Cohert Name">{{x.customerName}}
+                  <td class="{{x.clientID}}dob" data-title="Date of Birth">{{x.dob}}</td>
+                  <td class="{{x.clientID}}gender" data-title="Gender">{{x.gender}}</td>
+                  <td class="{{x.clientID}}address" data-title="Address">{{x.address}}</td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="selectedCohort(selectedCohortID);$close()" ng-disabled="selectCohortForm.cohortid.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>
+
+

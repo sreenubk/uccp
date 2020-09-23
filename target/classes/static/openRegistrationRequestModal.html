@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h3 class="modal-title">Person Registration</h3>
+</div>
+<form name="newRoleForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="roleName">Execution Name:<span class="red">*</span></label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="roleName" required name="roleName"><br/>
+  <label for="cohortName">Cohort Name:</label>
+  <div class="form-control" ng-model="selectedCohortID" required name="selectedCohortID">{{selectedCohortID}}</div><br/>
+  <div  ng-repeat = "x in selectRuleID">
+  	<label for="roleID">Role ID:</label>
+  	<span class="form-control" ng-model="selectedRoleID" required name="selectedRoleID">{{x}}</span><br/>
+ </div><br/>
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" id ="registerButton" ng-click="saveRoleName(roleName,selectedCohortID,selectedRoleID);$close()" ng-disabled="newRoleForm.roleName.$invalid">Register</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

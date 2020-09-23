@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h3 class="modal-title">Status History</h3>
+</div>
+<form name="selectRuleForm">
+<div class="modal-body">
+<div class="form-group">
+  <div class="panel panel-default">
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Request ID</th>
+                  <th>Status Date</th>
+                  <th>Status</th>
+                  <th>Status User</th>
+                  <th>Status Comments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-ng-repeat = "x in statusHistoryData">
+                  <td class="{{x.reqReqtID}}reqReqtID" data-title="Request ID" value = "x.reqReqtID" name = "selectedRuleID" ng-model = "associatedReq">{{x.reqReqtID}}</td>
+               	  <td class="{{x.reqReqtID}}statusDate" data-title="Status Date" value = "x.statusDate" name = "statusDate" >{{x.statusDate}}</td>
+            	   <td class="{{x.reqReqtID}}status" data-title="Status" value = "x.status" name = "status" ng-model = "status">{{x.status}}</td>
+            	   <td class="{{x.reqReqtID}}statusUser" data-title="Status Date" value = "x.statusUser" name = "statusUser" >{{x.statusUser}}</td>
+            	   <td class="{{x.reqReqtID}}statusComments" data-title="Status Comments" value = "x.statusComments" name = "statusComments" ng-model = "statusComments">{{x.statusComments}}</td>
+           		 </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+</div>
+</div>
+
+
+<div class="modal-footer">
+ <button class="btn btn-warning" type="button" ng-click="$close()">Ok</button>
+</div>
+
+</form>
+
+

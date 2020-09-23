@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Control Group</h3>
+</div>
+<form name="editGroupForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="ctrlGroup">Control Group Name:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedName"  required placeholder="{{selectedName}}" name="newCtrlGroup">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editSave(selectedName);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

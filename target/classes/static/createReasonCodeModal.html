@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Reason Code</h3>
+</div>
+<form name="newReasonCodeForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="reasonCode">Reason Code:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="reasonCode" required name="reasonCode"><br/>
+  <label for="reasonDesc">Reason Description:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="reasonDesc" required name="reasonDesc">
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="viewReasonCode(reasonCode,reasonDesc);$close()" ng-disabled="newReasonCodeForm.reasonCode.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

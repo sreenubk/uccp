@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <h3 class="modal-title">Select Cohort ID</h3>
+</div>
+<form name="selectCohortForm">
+<div class="modal-body">
+<div class="form-group">
+  <div class="panel panel-default">
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Cohort ID</th>
+                  <th>Cohort Name</th>
+                  <th>Cohert Description</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-class="{selected:$index==selectedRow}" data-ng-click="rowHighlighted($index,x.cohortid)" data-ng-repeat="x in myData" ng-model = "selectedCohortID">
+                  <td class="{{x.cohortid}}cohortid" data-title="Cohort ID" value = "x.cohortid" name = "cohortIdselected">{{x.cohortid}}</td>
+                  <td class="{{x.cohortid}}name" data-title="Cohert Name">{{x.name}}
+                  <td class="{{x.cohortid}}cohortdescription" data-title="Cohert Description">{{x.cohortdescription}}
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="selectedCohort(selectedCohortID);$close()" ng-disabled="selectCohortForm.cohortid.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>
+
+

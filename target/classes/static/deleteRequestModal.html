@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Delete Request</h3>
+</div>
+<form name="deleteRequestForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="reasonCode">Request ID:</label>
+    <div class="form-control" ng-model="selectedReqID" required name="reqID">{{selectedReqID}}</div><br/>
+ <!--  <label for="reasonDesc">Status Date:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="statusDate" required name="statusDate"><br/>
+  <label for="reasonDesc">Status User:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="statusUser" required name="statusUser"><br/> -->
+  <label for="reasonDesc">Status Comments:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="statusComment" required name="statusComment"><br/>
+  <label for="reasonDesc">Status:</label>
+  <div class="form-control" ng-model="reqStatus" required name="status">Reject</div>
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="deleteReqData(selectedReqID);$close()" ng-disabled="deleteRequestForm.reqID.$invalid">Delete</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

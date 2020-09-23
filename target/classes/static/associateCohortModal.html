@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Associate Existing Cohort</h3>
+</div>
+<form name="newReasonCodeForm">
+<div class="modal-body">
+	<div class="form-group">
+	  <label for="cohortID">Cohort ID:</label>
+	  <select class="form-control" id="cohortID" ng-model="cohortID"  required name="cohortID" >
+	        <option  disabled selected value>Please Select</option>
+	        <option ng-repeat = "x in myCohortData" >{{x.cohortid}}</option>
+			</option>
+	  </select>
+	  </div>
+	  <div class="form-group">
+		  <label for="reasonDesc">Name:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="cohortName" required name="cohortName">
+	  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="associateCohortTarget(cohortID,cohortName);$close()" ng-disabled="newReasonCodeForm.reasonCode.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

@@ -1,0 +1,81 @@
+<div class="container" ng-controller="viewRoleCtrl">
+
+      
+      <div class="row toprow">
+		  <h2 class="col-sm-3">View Role  </h2>  
+	  </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row">
+                <label for="roleDetail" class="col-sm-4">Role Name: {{addRole.rolename}}</label>
+                <label for="roleDetail" class="col-sm-4">Role Description: {{addRole.orgname}}</label>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Role Details
+          
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Role Name</th>
+                  <th>Role Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                <td class="{{addRole.rolename}}rolename" data-title="Role Name">{{addRole.rolename}}</td>
+                 <td class="{{addRole.rolename}}orgname" data-title="Role Description">{{addRole.orgname}}</td>
+                   <td> <span>
+                      <i style="margin-right:5px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(addRole.rolename,addRole.orgname)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{addRole.rolename}}" class="fa fa-times" aria-hidden="true" ng-click="deleteRole(addRole.rolename)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+              <tbody class="tranBody">
+           
+              </tbody>
+            </table>
+            
+                  
+          </div>
+        </div>
+      </div><!-- /Transactions -->
+         
+      </div><!-- /Transactions -->
+
+
+     
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

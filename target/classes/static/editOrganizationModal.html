@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Organization Details</h3>
+</div>
+<form name="editOrganizationForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="organizationDetail">Organization Name:<span class="red">*</span></label>
+  	<div class="form-control" ng-model="selectedOrganizationName"  required name="newOrganization">{{selectedOrganizationName}}</div>
+  </div>
+  <div class="form-group">
+  	<label for="organizationDetail">Description:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedBusinessType"  required placeholder="{{selectedBusinessType}}" name="newBusinessType">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editOrganizationSave(selectedBusinessType);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

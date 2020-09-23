@@ -1,0 +1,33 @@
+/*Licensed Materials - Property of IBM
+6949 - 67L
+  Copyright IBM Corp. 2017, 2018 All Rights Reserved
+*/
+
+<div class="modal-header">
+  <h3 class="modal-title">Add Attribute Contraint</h3>
+</div>
+<form name="addAttrForm">
+<div class="modal-body">
+	<div class="form-group">
+  		<label for="attrName">Attribute Name:</label>
+  		<input type="text" class="form-control" autocomplete="off" ng-model="attrName"  required name="attrName">
+  	</div>
+  	<div class="form-group">
+  		<label for="attrValue">Attribute Value:</label>
+  		<input type="text" class="form-control" autocomplete="off" ng-model="attrValue"  required name="attrValue">
+  	</div>
+  	<div class="form-group">
+  		<label for="attrType">Access Constraint Type:</label>
+		  <select class="form-control" id="attrType" ng-model="attrType"  required name="attrType">
+		        <option value="Allow">Allow</option>
+		        <option value="Deny">Deny</option>
+		  </select>
+	</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-disabled="addAttrForm.$invalid" ng-click="addAttributeSave(attrName,attrValue,attrType);$close()" >Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+</form>

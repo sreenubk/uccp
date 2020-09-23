@@ -1,0 +1,111 @@
+<style>
+.ui-widget-header .ui-icon {
+	background-image: url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/images/ui-icons_444444_256x240.png");
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon,
+.ui-button:hover .ui-icon,
+.ui-button:focus .ui-icon {
+	background-image: url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/images/ui-icons_555555_256x240.png");
+}
+</style>
+
+<div class="container" ng-controller="searchConsentCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Search Consent</h2>   
+		  <a href="index.html#!/personconsent" class="col-sm-2 martop30 txtright" ><i class="fa fa-plus-square" aria-hidden="true"></i> New Person Consent</a>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Person Consent
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="ctrlGroupForm">
+            
+              <div class="form-group col-sm-6">
+                <label for="startdate">Start Date:</label>
+		     	<input class="datepicker form-control" data-date-format="mm-dd-yyyy" autocomplete="off" class="form-control" placeholder="Start Date" ng-model="serstartdate" name="startdate">
+		      </div>
+              
+              <div class="form-group col-sm-6">
+                <label for="enddate">End Date:</label>
+	         	<input class="datepicker form-control" data-date-format="mm-dd-yyyy" autocomplete="off" class="form-control" placeholder="End Date" ng-model="serenddate" name="enddate">
+	          </div>
+              
+              <div class="form-group col-sm-6">
+                <label for="custName">Customer Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="custName" required placeholder="Customer Name" name="custName">
+              </div>
+              <div class="form-group col-sm-12">
+              	<button type="submit" ng-click="search(serstartdate, serenddate, custName)" class="btn btn-default" ng-disabled="ctrlGroupForm.ctrlGroup.$invalid">Search</button>
+              	<button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Customer Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in myData | orderBy:'-startdate'">
+                  <td class="{{x.personconsentid}}startdate" data-title="startdate">{{x.startdate}}</td>
+                  <td class="{{x.personconsentid}}enddate" data-title="enddate">{{x.enddate}}</td>
+                  <td class="{{x.personconsentid}}customerName" data-title="customerName">{{x.customerName}}
+                    <span style="float:right">
+                      <i style="margin-right:10px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.personconsentid,x.iseditAllow,x.startdate, x.enddate, x.consentCatList,x.customerName,x.clientid, x.contactphone, x.street, x.appSuite, x.city, x.state, x.zipCode, x.identificationno, x.identificationtype, x.thirdpartyrelationship, x.thirdpartyfirstname, x.thirdpartyotherrelationship, x.thirdpartylastname, x.fileid )"></i>
+                      
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+<script>
+$('.datepicker').datepicker({
+    startDate: '-3d'
+});
+</script>
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

@@ -1,0 +1,68 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Cohort Rule Details</h3>
+</div>
+<form name="editCohertForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="cohertRuleDetail">Rule ID:<span class="red">*</span></label>
+  	<div class="form-control" ng-model="selectedCohortRuleID" name="newCohortRule">{{selectedCohortRuleID}}</div>
+  </div>
+  <div class="form-group">
+  	<label for="cohertRuleDetail">Rule Short Description:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedRuleShortDesc"  required placeholder="{{selectedRuleShortDesc}}" name="newCohortRuleShortDesc">
+  </div>
+  <div class="form-group">
+  	<label for="cohortRuleDetail">Rule Description:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedRuleDesc"  required placeholder="{{selectedRuleDesc}}" name="newCohortRuleDesc">
+  </div>
+  <div class="form-group">
+  	<label for="cohortRuleDetail">Rule Action:</label>
+  	<select class="form-control" id="selectedRuleAction" ng-model="selectedRuleAction"  required name="selectedRuleAction">
+  		<option value="Registration_Request">Registration_Request</option>
+        <option value="Alert_Request">Alert_Request</option>
+	</select>
+  </div>
+  <div class="form-group">
+  	<label for="cohortRuleDetail">Reason Code:</label>
+  	<select class="form-control" id="reasonCode" ng-model="selectedReasonCode"  required name="selectedReasonCode">
+        <option ng-repeat="x in existReasonCodeData" >{{x.reasonCode}}</option>
+		</option>
+  </select>
+  </div>
+  <div class="form-group">
+  	<label for="cohortRuleDetail">Is Enabled:</label>
+   <select class="form-control" id="newCohortRuleIsEnabled" ng-model="selectedIsEnabled"  required name="selectedIsEnabled">
+	        <option value="Yes">Yes</option>
+	        <option value="No">No</option>
+   </select>
+  </div>
+  <div class="form-group">
+  	<label for="cohortRuleDetail">Approval Required:</label>
+  	<select class="form-control" id="newCohortRuleApprovalReq" ng-model="selectedApprvRequired"  required name="selectedApprvRequired">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+   </select>
+  </div>
+  <div class="form-group">
+  	<label for="cohortRuleDetail">Start Date:</label>
+  	<input class="datepicker form-control" data-date-format="mm-dd-yyyy" placeholder="{{selectedStartDate}}" autocomplete="off" id="newCohortRuleStartDate"  ng-model="selectedStartDate" name="newCohortRuleStartDate">
+ </div>
+  <div class="form-group">
+  	<label for="cohortRuleDetail">End Date:</label>
+  	<input class="datepicker form-control" data-date-format="mm-dd-yyyy" placeholder="{{selectedEndDate}}" autocomplete="off" id="newCohortRuleEndDate" ng-model="selectedEndDate" name="newCohortRuleEndDate">
+   </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editCohortRuleSave(selectedRuleShortDesc,selectedRuleDesc,selectedRuleAction,selectedReasonCode,selectedIsEnabled,selectedApprvRequired,selectedStartDate,selectedEndDate);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+<script>
+var dateToday = new Date();
+$('.datepicker').datepicker({
+    startDate: '-3d',
+    minDate: dateToday
+});
+</script>
+</form>

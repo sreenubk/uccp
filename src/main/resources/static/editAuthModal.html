@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Authorization Group</h3>
+</div>
+<form name="authNewForm">
+<div class="modal-body">
+	<div class="form-group">
+	  	<label for="authGroupNameLocal">Authorization Group Name:</label>
+	  	<input type="text" autocomplete="off" class="form-control" ng-model="authGroupNameLocal" disabled required value="authGroupNameLocal" placeholder="{{authGroupNameLocal}}" name="authGroupNameLocal">
+	 </div>
+	<div class="form-group">
+	  	<label for="ctrlGroup">Control Group Name:</label>
+	  	
+		 <input type="text" autocomplete="off" class="form-control" ng-model="controlgroupname" disabled required value="{{controlgroupname}}" placeholder="{{controlgroupname}}" name="controlgroupname">
+	 </div>
+	 <div class="form-group">
+		  <label for="ctrlGroup">Organization Unit:</label>
+		  <select class="form-control" id="org" ng-model="orgLocal" required name="org">
+		  		<option value=",0">Choose</option>
+		        <option  ng-repeat="x in orgUnits" value="{{x.name}},{{x.organisationunitid}}">{{x.name}}</option>
+		 </select>
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">Role:</label>
+		  <select class="form-control" id="role" ng-model="roleLocal" required name="role">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in roleLists" value="{{x.rolename}}">{{x.rolename}}</option>
+		 </select>	
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">Job:</label>
+		  <select class="form-control" id="job" ng-model="jobLocal" required name="job">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in jobLists" value="{{x.jobName}}">{{x.jobName}}</option>
+		  </select>
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">User:</label>
+		  <select class="form-control" id="user" ng-model="userLocal" required name="user">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in userLists" value="{{x.username}}">{{x.username}}</option>
+		  </select>
+	</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="editSave(controlgroupname,orgLocal,roleLocal,jobLocal,userLocal);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+</form>

@@ -1,0 +1,57 @@
+<div class="container" ng-controller="viewReasonCodeCtrl">
+      <div class="row toprow">
+		  <h2 class="col-sm-12">View Reason Code</h2>   
+		   </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+
+      <!-- div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row">
+                <label for="cohortDetail" class="col-sm-4">Cohort Name: {{addCohort.name}}</label>
+                <label for="cohortDetail" class="col-sm-4">Cohort Description: {{addCohort.cohortdescription}}</label>
+          	  </div>
+          </div>
+        </div>
+      </div--> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Reason Codes
+          
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Reason Code</th>
+                  <th>Reason Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="tranBody">
+           
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</div> <!-- /container /controlGroupCtrl -->
+

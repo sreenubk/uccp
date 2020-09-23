@@ -1,0 +1,28 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit User Details</h3>
+</div>
+<form name="editUserForm">
+<div class="modal-body">
+  <div class="form-group">
+      <label for="jobName">User Name:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="selectedUserName" required name="selectedUserName"><br/>
+	   <label for="roleName">Role Name:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="selectedRoleName" required name="selectedRoleName"><br/>
+  	  <label for="jobName">Job Name:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="selectedJobName" required name="selectedJobName"><br/>
+	  <label for="roleLevel">First Name:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="selectedFirstName" required name="selectedFirstName"><br/>
+	  <label for="roleLevel">Last Name:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="selectedLastName" required name="selectedLastName"><br/>
+	   <label for="orgName">Organization Name:<span class="red">*</span></label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="selectedOrgName" required name="selectedOrgName"><br/>
+	  <div id="err-orgName" class="red"></div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editUserSave(selectedUserName,selectedRoleName,selectedJobName,selectedFirstName,selectedLastName,selectedOrgName);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

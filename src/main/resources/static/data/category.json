@@ -1,0 +1,29 @@
+[
+    {
+        "consentgroupid": 1,
+        "description": "consent Desc1",
+        "name": "consentone",
+        "createdby": "Rohit",
+        "createdon": "2017-10-24",
+        "lastupdatedby": "Rohit",
+        "lastupdatedon": "2017-10-24"
+    },
+    {
+        "consentgroupid": 2,
+        "description": "consent Desc3",
+        "name": "consent3",
+        "createdby": "Rohit",
+        "createdon": "2017-10-24",
+        "lastupdatedby": "Rohit",
+        "lastupdatedon": "2017-10-24"
+    },
+    {
+        "consentgroupid": 3,
+        "description": "consent Desc2",
+        "name": "consenttwo",
+        "createdby": "Rohit",
+        "createdon": "2017-10-24",
+        "lastupdatedby": "Rohit",
+        "lastupdatedon": "2017-10-24"
+    }
+]

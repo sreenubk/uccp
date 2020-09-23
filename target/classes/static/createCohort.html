@@ -1,0 +1,79 @@
+<div class="container" ng-controller="createCohortCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Cohort</h2>   
+		  <a href="" class="col-sm-2 martop30 txtright" ng-click="viewCohort()"><i class="fa fa-plus-square" aria-hidden="true"></i> New Cohort</a>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Cohort 
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="CohortForm">
+              <div class="form-group">
+                <label for="cohortDetail">Cohort Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="cohortName" placeholder="Cohort Name" name="cohortDetail">
+              </div>
+              
+              <button type="submit" ng-click="searchCohort(cohortName)" class="btn btn-default">Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Cohort Name</th>
+                  <th>Cohort Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in myData">
+                  <td class="{{x.cohortid}}name" data-title="Cohort Name"><a ng-click=viewCohortDetails(x.cohortid) style="cursor:pointer;">{{x.name}}</a></td>
+                  <td class="{{x.cohortid}}cohortdescription" data-title="Cohort Description">{{x.cohortdescription}}</td>
+                   <td> <span>
+                      <i style="margin-right:5px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.cohortid,x.name,x.cohortdescription)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{x.cohortid}}" class="fa fa-times" aria-hidden="true" ng-click="deleteCohort(x.cohortid,x.name)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /cohortCtrl -->
+

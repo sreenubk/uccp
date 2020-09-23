@@ -1,0 +1,119 @@
+<div class="container" ng-controller="authorizationCtrl">
+      <div class="row toprow clearfix">
+		  <h2 class="col-sm-10">Authorization Group Search  </h2>   
+		  <a href="" class="col-sm-2 martop30 txtright" ng-click="addAuthGroup()"><i class="fa fa-plus-square" aria-hidden="true"></i> New Group</a>
+	  </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Criteria
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="ctrlGroupForm">
+            	<div class="col-sm-6">
+	              <div class="form-group attrType">
+	                 <label for="ctrlGroup">Control Group Name:</label>
+	                 <select class="form-control" id="groupName" ng-model="groupName" name="groupName">
+	                 		<option disabled selected value>Choose</option>
+					        <option  ng-repeat="x in groupNames" value="{{x.controlgroupid}}">{{x.controlgroupname}}</option>
+					 </select>
+					
+	              </div>
+	              <div class="form-group">
+	                 <label for="ctrlGroup">Job:</label>
+	                 <select class="form-control" id="jobList" ng-model="jobList" name="jobList">
+					        <option disabled selected value>Choose</option>
+					        <option  ng-repeat="x in jobLists" value="{{x.jobid}}">{{x.jobName}}</option>
+					 </select>
+	              </div>
+              </div>
+              <div class="col-sm-6">
+	              <div class="form-group">
+	                 <label for="ctrlGroup">Organization Unit:</label>
+	                 <select class="form-control" id="orgUnit" ng-model="orgUnit"  name="orgUnit">
+					        <option disabled selected value>Choose</option>
+					        <option  ng-repeat="x in orgUnits" value="{{x.organisationunitid}}">{{x.name}}</option>
+					 </select>
+	              </div>
+	              <div class="form-group">
+	                 <label for="ctrlGroup">Role:</label>
+	                 <select class="form-control" id="roleList" ng-model="roleList" name="roleList">
+					        <option disabled selected value>Choose</option>
+					        <option  ng-repeat="x in roleLists" value="{{x.rolename}}">{{x.rolename}}</option>
+					 </select>
+	              </div>
+              </div>
+              <div class="col-sm-12">
+              <button type="submit" ng-click="search(groupName,jobList,orgUnit,roleList)" class="btn btn-default" >Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Authorization Group Name</th>
+                  <th>Control Group Name</th>
+                  <th>Organization Unit</th>
+                  <th>Role</th>
+                  <th>Job</th>
+                  <th>Username</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in myauthData">
+                  <td id="{{x.authorizationgroupid}}authGroupName" data-title="Authorization Group Name">{{x.authGroupName}}</td>
+                  <td id="{{x.authorizationgroupid}}controlgroupname" data-title="Control Group Name">{{x.controlgroupname}}</td>
+                  <td id="{{x.authorizationgroupid}}organisationname" data-title="Organisation name">{{x.organisationname}}</td>
+                  <td id="{{x.authorizationgroupid}}securityrole" data-title="Security role">{{x.securityrole}}</td>
+                  <td id="{{x.authorizationgroupid}}job" data-title="job">{{x.jobName}}</td>
+                  <td id="{{x.authorizationgroupid}}users" data-title="users"><span class="usrname">{{x.users}}</span></td>
+                   <td> <span style="float:right">
+                      <i style="margin-right:10px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="editAuth(x.authorizationgroupid,x.authGroupName,x.controlgroupname,x.cosdabaccontrolgroup,x.jobid,x.organisationunit,x.organisationname,x.securityrole,x.jobName,x.users)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{x.authorizationgroupid}}" class="fa fa-times" aria-hidden="true" ng-click="deleteAuth(x.authorizationgroupid,x.controlgroupname,x.cosdabaccontrolgroup,x.jobid,x.organisationunit)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+
+</div>
+
+
+

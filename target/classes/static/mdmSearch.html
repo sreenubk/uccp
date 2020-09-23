@@ -1,0 +1,316 @@
+<div class="container" ng-controller="mdmSearchCtrl">
+  <div class="row toprow">
+    <h2 class="col-sm-10">Person Search</h2>
+  </div>
+
+  <div class="row toprow">
+    <div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+      <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+      {{ sucessMsg }}
+    </div>
+    <div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+      <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+      {{ errorMsg }}
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Search by Keyword
+      <button
+        class="btn btn-box-right collapsed"
+        data-toggle="collapse"
+        href="#demo"
+      >
+        <i class=" fa fa-expand"></i>
+      </button>
+    </div>
+    <div id="demo" class="collapse in">
+      <div class="panel-body">
+        <form name="personSearchForm">
+          <div class="form-group col-sm-6">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="firstName"
+              placeholder="Keyword"
+              name="mdmDetail"
+            />
+          </div>
+          <!-- <div class="form-group col-sm-4">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="middleName"
+              placeholder="Middle Name"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-4">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="lastName"
+              placeholder="Last Name"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-3">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="gender"
+              placeholder="Gender"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-3">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="dateofBirth"
+              placeholder="Date of Birth"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-3">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="ssn"
+              placeholder="SSN"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-3">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="phone"
+              placeholder="Phone"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-6">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="address"
+              placeholder="Address"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-2">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="city"
+              placeholder="City"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-2">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="state"
+              placeholder="State"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-2">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="zipCode"
+              placeholder="Zip"
+              name="mdmDetail"
+            />
+          </div> -->
+          <div class="form-group col-sm-4"></div>
+          <div class="form-group col-sm-12">
+            <div class=" col-sm-3"></div>
+            <button
+              type="submit"
+              ng-click="searchMDM(firstName,middleName,lastName,gender,ssn,address,city,state,zipCode,dateofBirth,phone)"
+              class="btn btn-default col-sm-2"
+            >
+              Search
+            </button>
+            <div class=" col-sm-2"></div>
+            <button
+              type="reset"
+              ng-click="reset()"
+              class="btn btn-default col-sm-2"
+            >
+              Reset
+            </button>
+            <div class=" col-sm-3"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Search Criteria -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Search by Client ID
+      <button
+        class="btn btn-box-right collapsed"
+        data-toggle="collapse"
+        href="#searchClient"
+      >
+        <i class=" fa fa-expand"></i>
+      </button>
+    </div>
+    <div id="searchClient" class="collapse in">
+      <div class="panel-body">
+        <form name="searchByClientForm">
+          <div class="form-group col-sm-2"></div>
+          <div class="form-group col-sm-4">
+            <select id="input2" class="form-control" ng-model="selSourceCode">
+              <option disabled selected value>Select Source Code</option>
+              <option>CALWIN</option>
+              <option>SWITS</option>
+              <option>AVATAR</option>
+              <option>IJS</option>
+              <option>WCM</option>
+            </select>
+          </div>
+          <div class="form-group col-sm-4">
+            <input
+              type="text"
+              autocomplete="off"
+              class="form-control"
+              autocomplete="off"
+              ng-model="clientId"
+              placeholder="Client ID"
+              name="mdmDetail"
+            />
+          </div>
+          <div class="form-group col-sm-2"></div>
+          <div class="form-group col-sm-12">
+            <div class=" col-sm-3"></div>
+            <button
+              type="submit"
+              ng-click="searchByClient(clientId,selSourceCode)"
+              class="btn btn-default col-sm-2"
+            >
+              Search
+            </button>
+            <div class=" col-sm-2"></div>
+            <button
+              type="reset"
+              ng-click="reset()"
+              class="btn btn-default col-sm-2"
+            >
+              Reset
+            </button>
+            <div class=" col-sm-3"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- /Search Criteria -->
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Search Results
+      <button
+        class="btn btn-box-right collapsed"
+        data-toggle="collapse"
+        href="#demo"
+      >
+        <i class=" fa fa-expand"></i>
+      </button>
+    </div>
+    <div id="demo" class="collapse in">
+      <div class="panel-body">
+        <table class="table-bordered table-striped table-condensed cf results">
+          <thead class="cf">
+            <tr>
+              <th>Name</th>
+              <th>Gender</th>
+              <th>Date of Birth</th>
+              <th>SSN</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>Match Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="x in personData">
+              <td class="clientName" data-title="Name">
+                <a
+                  ng-click="selectPersonCard(x.id,'9.1')"
+                  style="cursor:pointer;"
+                  ><span ng-modal="currentClientName">
+                    {{
+                      x.firstName + " " + x.middleName + " " + x.lastName
+                    }}</span
+                  ></a
+                >
+              </td>
+              <td class="gender" data-title="Gender">
+                <span>{{ x.attrVal }}</span>
+              </td>
+              <td class="birthDate" data-title="Birth Date">
+                <span>{{ x.dateVal | date: "MM/dd/yyyy" }}</span>
+              </td>
+              <td class="ssn" data-title="SSN">
+                <span>{{ x.idNumber }}</span>
+              </td>
+              <td class="phone" data-title="Phone">
+                <span>{{ x.phNumber }}</span>
+              </td>
+              <td class="address" data-title="address">
+                <span>{{
+                  x.streetLine1 +
+                    x.streetLine2 +
+                    x.streetLine3 +
+                    x.streetLine4 +
+                    ", " +
+                    x.city +
+                    ", " +
+                    x.state +
+                    " " +
+                    x.zipCode
+                }}</span>
+              </td>
+              <td
+                class="matchScore"
+                data-title="Match Score"
+                ng-model="matchScore"
+              >
+                <span>{{ x.score }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

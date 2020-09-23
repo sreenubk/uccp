@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Job</h3>
+</div>
+<form name="newJobForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="jobName">Job Name:<span class="red">*</span></label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="jobName" required name="jobName"><br/>
+  <div id="err-jobName" class="red"></div>
+  <label for="jobDesc">Job Description:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="jobDesc" required name="jobDesc">
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="viewJobName(jobName,jobDesc);$close()" ng-disabled="newJobForm.jobName.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

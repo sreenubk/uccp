@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Role Details</h3>
+</div>
+<form name="editRoleForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="roleDetail">Role Name:<span class="red">*</span></label>
+  	<div class="form-control" ng-model="selectedRoleName"  required name="newRoleName">{{selectedRoleName}}</div>
+  </div>
+  <div class="form-group">
+  	<label for="roleDetail">Role Description:<span class="red">*</span></label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedOrgName"  required placeholder="{{selectedOrgName}}" name="newOrgName">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editRoleSave(selectedOrgName);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

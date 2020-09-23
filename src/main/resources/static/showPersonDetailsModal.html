@@ -1,0 +1,289 @@
+<div class="modal-header">
+  <h3 class="modal-title">Show Person Details</h3>
+</div>
+<form name="showPersonDetailsForm">
+<div class="modal-body">
+<div class="form-group">
+  <div class="panel panel-default">
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+          	<div class = "col-sm-12">
+				<div class = "col-sm-4">
+					<label for="clientName">Client Name:</label>
+				</div>
+				<div class = "col-sm-8">
+					 <div  ng-model="clientName"  name="clientName">{{existODSData.MDMData[0].clientNameList.clientName[0].firstName + " "  + existODSData.MDMData[0].clientNameList.clientName[0].middleName + " " +  existODSData.MDMData[0].clientNameList.clientName[0].lastName}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-4">
+					<label for="clientGender">Gender:</label>
+				</div>
+				<div class = "col-sm-8">
+					 <div  ng-model="clientGender"  name="clientGender">{{existODSData.MDMData[0].genderList.gender[0].attrVal}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-4">
+					<label for="clientDOB">Date of Birth:</label>
+				</div>
+				<div class = "col-sm-8">
+					 <div  ng-model="clientDOB"  name="clientDOB" >{{existODSData.MDMData[0].dateofBirthList.dateofBirth[0].dateVal}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-4">
+					<label for="clientSSN">SSN:</label>
+				</div>
+				<div class = "col-sm-8">
+					 <div  ng-model="clientSSN"  name="clientSSN">{{existODSData.MDMData[0].ssnlist.ssn[0].idNumber}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-4">
+					<label for="clientPhone" >Phone:</label>
+				</div>
+				<div class = "col-sm-8">
+					 <div  ng-model="clientPhone"  name="clientPhone" >{{existODSData.MDMData[0].homePhoneList.homePhone[0].phNumber}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-4">
+					<label for="clientAddress">Address:</label>
+				</div>
+				<div class = "col-sm-8">
+					 <div  ng-model="clientAddress"  name="clientAddress" ng-if = "existODSData.MDMData[0].homeAddressList">{{existODSData.MDMData[0].homeAddressList.homeAddress[0].streetLine1 + existODSData.MDMData[0].homeAddressList.homeAddress[0].streetLine2 +
+									existODSData.MDMData[0].homeAddressList.homeAddress[0].streetLine3 + existODSData.MDMData[0].homeAddressList.homeAddress[0].streetLine4+ ", " +existODSData.MDMData[0].homeAddressList.homeAddress[0].city+ ", " +existODSData.MDMData[0].homeAddressList.homeAddress[0].state+ " "+ existODSData.MDMData[0].homeAddressList.homeAddress[0].zipCode}}</div><br/>
+			 	</div>
+			</div>
+            <!--div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="clientProfileSeqNo">Client Sequence No:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="clientProfileSeqNo"  name="clientProfileSeqNo">{{existODSData.MDMData[0].clientNameList.clientName[0].memSeqno}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="clientProfileSeqNo">Client ID:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="clientID"  name="clientID">{{existODSData.MDMData[0].clientId.memIdnum}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="sourceSysID">Source System ID:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="sourceSysID"  name="sourceSysID">{{existODSData.MDMData[0].clientId.srcCode}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="admDate">Admission Date:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="admDate"  name="admDate">{{existODSData.ODSData[0].admissionDate}}</div><br/>
+			 	</div>
+			</div>
+			
+			   <div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="noPriorAdm">Number of Prior Admission:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="noPriorAdm"  name="noPriorAdm">{{existODSData.ODSData[0].numPriorAdmission}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="noAlcDayPast30">Number of No Alcohol Days past 30 Days:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="noAlcDayPast30"  name="noAlcDayPast30">{{existODSData.ODSData[0].numNoAlcoholDaysPast30d}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="noAlcUsedDayPast30">Number of Alcohol Used Days past 30 Days:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="noAlcUsedDayPast30"  name="noAlcUsedDayPast30">{{existODSData[0].numAlcoholUsedDaysPast30d}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="injDrugUser">Injection Drug User:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="injDrugUser"  name="injDrugUser">{{existODSData[0].injectionDrugUser}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="usedNeedlePast">Used Needles Past 12 months:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="usedNeedlePast"  name="usedNeedlePast">{{existODSData[0].usedNeedlesPast12m}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="noDaysIVUsed">Number of Days IV used past 30 days:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="noDaysIVUsed"  name="noDaysIVUsed">{{existODSData[0].numDaysIvUsedPast30d}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="dischargeStat">Discharge Status:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="dischargeStat"  name="dischargeStat">{{existODSData[0].dischargeStatus}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="priDrugName">Primary Drug Name:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="priDrugName"  name="priDrugName">{{existODSData[0].priDrugName}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="priDrugType">Primary Drug Type:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="priDrugType"  name="priDrugType">{{existODSData[0].priDrugType}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="priAgeFirstUse">Primary Age First Use:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="priAgeFirstUse"  name="priAgeFirstUse">{{existODSData[0].priAgeFirstUse}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="priNumDaysUsedPast30d">Primary Number of Days Used past 30 Days:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="priNumDaysUsedPast30d"  name="priNumDaysUsedPast30d">{{existODSData[0].priNumDaysUsedPast30d}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="priRouteOfAdmin">Primary Route of Admin:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="priRouteOfAdmin"  name="priRouteOfAdmin">{{existODSData[0].priRouteOfAdmin}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="secDrugName">Secondary Drug Name:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="secDrugName"  name="secDrugName">{{existODSData[0].secDrugName}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="secDrugType">Secondary Drug Type:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="secDrugType"  name="secDrugType">{{existODSData[0].secDrugType}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="secAgeFirstUse">Secondary Age First Use:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="secAgeFirstUse"  name="secAgeFirstUse">{{existODSData[0].secAgeFirstUse}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="secNumDaysUsedPast30d">Secondary Number of Days Used past 30 Days:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="secNumDaysUsedPast30d"  name="secNumDaysUsedPast30d">{{existODSData[0].secNumDaysUsedPast30d}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="secRouteOfAdmin">Secondary Route of Admin:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="secRouteOfAdmin"  name="secRouteOfAdmin">{{existODSData[0].secRouteOfAdmin}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="terDrugName">Tertiary Drug Name:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="terDrugName"  name="terDrugName">{{existODSData[0].terDrugName}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="terDrugType">Tertiary Drug Type:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="terDrugType"  name="terDrugType">{{existODSData[0].terDrugType}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="terAgeFirstUse">Tertiary Age First Use:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="terAgeFirstUse"  name="terAgeFirstUse">{{existODSData[0].terAgeFirstUse}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="terNumDaysUsedPast30d">Tertiary Number of Days Used past 30 Days:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="terNumDaysUsedPast30d"  name="terNumDaysUsedPast30d">{{existODSData[0].terNumDaysUsedPast30d}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+				<div class = "col-sm-8">
+					<label for="terRouteOfAdmin">Tertiary Route of Admin:</label>
+				</div>
+				<div class = "col-sm-4">
+					 <div  ng-model="terRouteOfAdmin"  name="terRouteOfAdmin">{{existODSData[0].terRouteOfAdmin}}</div><br/>
+			 	</div>
+			</div>
+			<div class = "col-sm-12">
+			<div class = "col-sm-8">
+				<label for="processTs">Process Task:</label>
+			</div>
+			<div class = "col-sm-4">
+				 <div  ng-model="processTs"  name="processTs">{{existODSData[0].processTs}}</div><br/>
+		 	</div>
+		</div-->
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+</div>
+</div>
+
+
+<div class="modal-footer">
+ <button class="btn btn-warning" type="button" ng-click="$close()">Ok</button>
+</div>
+
+</form>

@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Consent Category</h3>
+</div>
+<form name="newConsentGroupForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="ctrlGroup">Consent Category Name:</label>
+  <input type="text" class="form-control" autocomplete="off" ng-model="consentCategoryName" required name="consentCategoryName">
+</div>
+<div class="form-group">
+  <label for="ctrlGroup">Consent Category Description:</label>
+  <textarea rows="4" cols="50" class="form-control" autocomplete="off" ng-model="consentCategoryDesp" required name="consentCategoryDesp"></textarea> 
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="newConsentSave(consentCategoryName,consentCategoryDesp);$close()" ng-disabled="newConsentGroupForm.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

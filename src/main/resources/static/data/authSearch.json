@@ -1,0 +1,13 @@
+[ {
+      				"authorizationgroupid": null,
+      		        "username": "user",
+      		        "organisationunitid": "123",
+      		        "rolename": "role2",
+      		        "controlgroupid": "456456",
+      		        "jobid": "345",
+      		        "createdby": null,
+      		        "createdon": null,
+      		        "lastupdatedby": null,
+      		        "lastupdatedon": null,
+      		        "versionno":null
+      	        }]

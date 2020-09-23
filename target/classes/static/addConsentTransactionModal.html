@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h3 class="modal-title">Add Transaction</h3>
+</div>
+<form name="newTranForm">
+<div class="modal-body">
+	<div class="form-group">
+	  	<label for="ctrlGroup">Transaction Name:</label>
+	  	<input type="text" class="form-control" autocomplete="off" ng-model="tranName"  required name="tranName">
+	</div>
+  	<div class="form-group">
+		  <label for="ctrlGroup">Transaction Type:</label>
+		  <select class="form-control" id="tranType" autocomplete="off" ng-model="tranType"  required name="tranType">
+		        <option value="Page">Page</option>
+		        <option value="Report">Report</option>
+		  </select>
+	</div>
+  	<div class="form-group">
+		  <label for="ctrlGroup">Default Access Type:</label>
+		  <select class="form-control" id="accessType" ng-model="accessType"  required name="accessType">
+		        <option value="Allow">Allow</option>
+		        <option value="Deny">Deny</option>
+		  </select>
+	</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-disabled="newTranForm.$invalid" ng-click="addTransactionSave(tranName,tranType,accessType);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

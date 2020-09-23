@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+
+    <title>Uccp</title>
+<script src="js/jquery.min.js"></script>
+<link href="css/jquery-ui.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	
+    <!-- Custom styles for this template -->
+    <link href="css/navbar-fixed-top.css" rel="stylesheet">
+	 <!-- Custom styles for WCM template -->
+    <!--  link href="css/wcm-navbar-fixed-top.css" rel="stylesheet">-->
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body ng-app="myApp">
+  
+   <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+    	<div style="background-color: rgb(4, 138, 228); margin-bottom: 20px;">
+		  <div class="container" style="text-align: right; padding: 5px 20px 3px 5px; font-size: 12px;" ng-if = "showNavbar">
+		 <a href="#!audit" ng-show="authenticated" class="colorwhite marrgt15"  style="margin-right:10px; border-right:1px dotted #fff; padding-right:10px;">Audit Report</a>
+			<a href="#!personReport" ng-show="authenticated" class="colorwhite marrgt15"  style="margin-right:10px; border-right:1px dotted #fff; padding-right:10px;">Constituent Consent Report</a>
+			<a href="#!config" ng-show="authenticated" class="colorwhite marrgt15" style="margin-right:10px; border-right:1px dotted #fff; padding-right: 10px;" >Configuration Test Utility</a>
+			<a href="#!createUser" ng-show="authenticated" class="colorwhite marrgt15">User Management</a>
+			<a href="" ng-click="logout()" ng-show="authenticated" class="colorwhite marrgt15"><i class="fa fa-crosshairs" aria-hidden="true"></i> Logout</a>
+ 		 </div>
+		</div>
+      <div class="container">
+        <div class="navbar-header  col-sm-12" >
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">Universal Constituent Care Platform</a>
+        </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar" ng-if = "showNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Constituent Home </a>
+	          <ul class="dropdown-menu subMenuClass">
+	            <li><a href="#" target="_self">Search</a></li>
+	            <li><a href="#!newPersonDetail" value="perDetail">Constituent Detail</a></li>
+	            <li><a href="#!manualRegRequest" value="manRegReq">Registration Request</a></li>
+	            <li><a href="#!manualAlertRequest" value="mnAlertReq">Alert Request</a></li>
+	          </ul>
+	        </li>
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#!selectCohReg">Application Connector</a>
+	          <ul class="dropdown-menu subMenuClass">
+	            <li><a  href="#!selectCohReg" value="selectCohReg">Manage Registration Requests</a></li>
+	             <li><a  href="#!selectCohAlert">Manage Alert Requests</a></li>
+	            <!-- li><a  href="#!selectCohReg" value="selCohReg">Manual Execution - Registration</a></li>
+	            <li><a  href="#!selectCohAlert" value="selCohAlert">Manual Execution - Alert</a></li> -->
+	            <!--  li><a  href="#!manageRegRequest" value="mnRegReq">Manage Registration Requests</a></li>-->
+	            <!-- li><a href="#!manage-alert-request" value="mnAlertReq">Manage Alert Requests</a></li-->
+	          </ul>
+	        </li>
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#!createCohort">Configuration</a>
+	          <ul class="dropdown-menu subMenuClass">
+	            <li><a href="#!createCohort" value="cohort">Cohort</a></li>
+	            <li><a href="#!createTarget" value="target">Target</a></li>
+	            <!-- li><a href="#!associateCohortTarget" value="assCohTarget">Associate Cohort & Target</a></li-->
+	          </ul>
+	        </li>
+	        <li class="dropdown">
+	          <a class="dropdown-toggle" data-toggle="dropdown" href="#!create-controlgroup">Authorization & Consent</a>
+	          <ul class="dropdown-menu subMenuClass">
+	          	<li ng-show='viewControlGroupView!=0'><a href="#!create-controlgroup">Attribute Control Group</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!authorization">Authorization Group Search</a></li>
+	            <li ng-show='viewControlGroupView!=0 && viewControlGroupView==3'><a href="#!viewControlGroup">View Control Group</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!consentCategories">Consent Category Search</a></li>
+	            <li ng-show='viewControlGroupView!=0 && viewControlGroupView==5'><a href="#!viewConsentCategory">View Consent Category</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!personconsent">Constituent Consent</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!searchconsent">Search Consent</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!policyset">Policy Set</a></li>
+	            <li ng-show='viewControlGroupView!=0 && viewControlGroupView==8'><a href="#!viewPolicySet">View Policy Set</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!createOrganization">Organization</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!createRole">Role</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!createJob">Job</a></li>
+	            <li ng-show='viewControlGroupView!=0'><a href="#!createUser">User</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+     
+    	</div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  
+
+    <!-- Fixed navbar -->
+    <!-- nav class="navbar navbar-default navbar-fixed-top" ng-if = "!showWcmApi">
+    	<div style="background-color: rgb(4, 138, 228); margin-bottom: 20px;">
+		  <div class="container" style="text-align: right; padding: 5px 20px 3px 5px; font-size: 12px;">
+		    
+			<a href="#!audit" ng-show="authenticated" class="colorwhite marrgt15"  style="margin-right:10px; border-right:1px dotted #fff; padding-right:10px;">Audit Report</a>
+			<a href="#!personReport" ng-show="authenticated" class="colorwhite marrgt15"  style="margin-right:10px; border-right:1px dotted #fff; padding-right:10px;">Person Consent Report</a>
+			<a href="#!config" ng-show="authenticated" class="colorwhite marrgt15">Configuration Test Utility</a>
+			<a href="" ng-click="logout()" ng-show="authenticated" class="colorwhite marrgt15" style="margin-right:10px; border-right:1px dotted #fff; padding-right:10px;"><i class="fa fa-crosshairs" aria-hidden="true"></i> Logout</a>
+ 		  	<a href="#!mdm-search" ng-click="switchTo()" ng-show="authenticated" class="colorwhite marrgt15"></i>Home</a>
+ 		  	
+ 		  </div>
+ 		  
+		</div>
+      <div class="container">
+      	
+      
+      
+      
+        <div class="navbar-header  col-sm-12" >
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">System Configurations</a>
+        </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav  col-sm-12">
+            <li ng-show='viewControlGroupView!=0'><a href="#!create-controlgroup">Attribute Control Group</a></li>
+            <li ng-show='viewControlGroupView!=0'><a href="#!authorization">Authorization Group Search</a></li>
+            <li ng-show='viewControlGroupView!=0 && viewControlGroupView==3'><a href="#!viewControlGroup">View Control Group</a></li>
+            <li ng-show='viewControlGroupView!=0'><a href="#!consentCategories">Consent Category Search</a></li>
+            <li ng-show='viewControlGroupView!=0 && viewControlGroupView==5'><a href="#!viewConsentCategory">View Consent Category</a></li>
+            <li ng-show='viewControlGroupView!=0'><a href="#!personconsent">Person Consent</a></li>
+            <li ng-show='viewControlGroupView!=0'><a href="#!searchconsent">Search Consent</a></li>
+            <li ng-show='viewControlGroupView!=0'><a href="#!policyset">Policy Set</a></li>
+            <li ng-show='viewControlGroupView!=0 && viewControlGroupView==8'><a href="#!viewPolicySet">View Policy Set</a></li>
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav-->
+
+	<div class="ng-view"></div> 
+
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-cookies.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/login.js"></script>
+    <!-- <script src="js/services.js"></script> --> 
+    <script src="js/createGroupController.js"></script>
+     <script src="js/authorization.js"></script>
+      <script src="js/viewControlGroup.js"></script>
+      <script src="js/consentCategories.js"></script>
+      <script src="js/viewConsentCategory.js"></script>
+      <script src="js/personconsent.js"></script>
+      <script src="js/policyset.js"></script>
+   	<script src="js/viewPolicySet.js"></script>
+   	<script src="js/audit.js"></script>
+   <script src="js/config.js"></script>
+   	<script src="js/personreport.js"></script>
+   <script src="js/searchConsentPage.js"></script>
+   <script src="js/createOrganizationCtrl.js"></script>
+   <script src="js/createRoleCtrl.js"></script>
+   <script src="js/createUserCtrl.js"></script>
+   <script src="js/viewOrganizationCtrl.js"></script>
+   <script src="js/viewRoleCtrl.js"></script>
+   <script src="js/selCohRegCtrl.js"></script>
+    <script src="js/viewRulesCtrl.js"></script>
+    <script src="js/selCohAlertCtrl.js"></script>
+    <script src="js/viewPersonAlertCtrl.js"></script>
+    <script src="js/createJobCtrl.js"></script>
+    <script src="js/viewJobCtrl.js"></script>
+   <!-- Controllers for WCM API -->
+    <script src="js/mdmSearchCtrl.js"></script>
+     <script src="js/apiManagerCtrl.js"></script>
+     <script src="js/selectCohortCtrl.js"></script>
+      <script src="js/manualAlertRequestCtrl.js"></script>
+      <script src="js/manualRegRequestCtrl.js"></script>
+   	<script src="js/entityDetailsCtrl.js"></script>
+   <script src="js/config.js"></script>
+   <script src="js/viewCohortCtrl.js"></script>
+   <script src="js/createCohortCtrl.js"></script>
+   <script src="js/createTargetCtrl.js"></script>
+   <script src="js/viewReasonCodeCtrl.js"></script>
+   <script src="js/manageRegRequestCtrl.js"></script>
+   <script src="js/manageAlertRequestCtrl.js"></script>
+   <script src="js/viewTargetCtrl.js"></script>
+   <script src="js/entityResultsCtrl.js"></script>
+   <script src="js/memberDetailsCtrl.js"></script>
+   <script src="js/newPersonDetailCtrl.js"></script>
+  </body>
+</html>

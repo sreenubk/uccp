@@ -1,0 +1,13 @@
+[
+    {
+        	"attributeconstraintid": 8832,
+			"attributename": "yyprgId",
+	        "attributevalue": "123",
+	        "accessconstrainttype": "Deny",
+	        "createdby": "360IBM",
+        	"createdon": "2017-10-03",
+        	"lastupdatedby": "L360",
+        	"lastupdatedon": "2017-10-03"
+    }
+]
+			

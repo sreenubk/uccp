@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Attribute Constraint</h3>
+</div>
+<form name="editAttrForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="ctrlGroup">Attribute Name:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedAttrName"  required placeholder="{{selectedAttrName}}" name="selectedAttrName">
+  </div>
+  <div class="form-group">
+ 	 <label for="ctrlGroup">Attribute Value:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedAttrValue"  required placeholder="{{selectedAttrValue}}" name="selectedAttrValue" value = "selectedAttrValue">
+  </div>
+  <div class="form-group">
+	  <label for="ctrlGroup">Access Constraint Type:</label>
+	  <select class="form-control" id="attrType" ng-model="selectedaccessconstrainttype"  required name="selectedaccessconstrainttype">
+	        <option value="Allow">Allow</option>
+	        <option value="Deny">Deny</option>
+	  </select>
+  </div>
+
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-disabled="editAttrForm.$invalid" ng-click="editSave(selectedAttrName,selectedAttrValue,selectedaccessconstrainttype);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Control Group</h3>
+</div>
+<form name="newCtrlGroupForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="ctrlGroup">Control Group Name:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="groupName" required name="groupName">
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="viewGroup(groupName);$close()" ng-disabled="newCtrlGroupForm.groupName.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

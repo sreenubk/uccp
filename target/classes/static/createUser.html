@@ -1,0 +1,90 @@
+<div class="container" ng-controller="createUserCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-4">User</h2>
+		  <a href="#!createJob" class="col-sm-2 martop30 txtright" ><i class="fa fa-plus-square" aria-hidden="true"></i> Job</a>
+		  <a href="#!createRole" class="col-sm-2 martop30 txtright" ><i class="fa fa-plus-square" aria-hidden="true"></i> Role</a>
+		  <a href="#!createOrganization" class="col-sm-2 martop30 txtright"><i class="fa fa-plus-square" aria-hidden="true"></i> Organization</a>   
+		  <a href="" class="col-sm-2 martop30 txtright" ng-click="viewUser()"><i class="fa fa-plus-square" aria-hidden="true"></i> New User</a>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search User 
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="UserForm">
+              <div class="form-group">
+                <label for="userDetail">User Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="userName" placeholder="User Name" name="userDetail">
+              </div>
+              
+              <button type="submit" ng-click="searchUser(userName)" class="btn btn-default">Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>User Name</th>
+                  <th>Role Name</th>
+                  <th>Job Name</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Organization Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in userDataEntry">
+                  <td class="{{x.username}}username" data-title="User Name"><a ng-click=viewUserDetails(x.username) style="cursor:pointer;">{{x.username}}</a></td>
+                  <td class="{{x.username}}rolename" data-title="Role Name">{{x.rolename}}</td>
+                   <td class="{{x.username}}userRole" data-title="Job Name">{{x.userRole}}</td>
+                    <td class="{{x.username}}firstname" data-title="User Description">{{x.firstname}}</td>
+                      <td class="{{x.username}}lastname" data-title="User Description">{{x.lastname}}</td>
+                      <td class="{{x.username}}orgName" data-title="User Description">{{x.orgName}}</td>
+                   <td> <span>
+                      <i style="margin-right:5px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.username,x.rolename,x.userRole,x.firstname,x.lastname,x.orgName)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{x.username}}" class="fa fa-times" aria-hidden="true" ng-click="deleteUser(x.username)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /UserCtrl -->
+

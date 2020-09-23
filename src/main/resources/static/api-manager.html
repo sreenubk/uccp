@@ -1,0 +1,77 @@
+<div class="container" ng-controller="apiManagerCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">API Manager</h2>   
+		  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <!-- div class="panel panel-default">
+        <div class="panel-heading">Search Cohort List 
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="ctrlGroupForm">
+              <div class="form-group">
+                <label for="ctrlGroup">Cohort Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="ctrlGroup" required placeholder="Control Group Name" name="ctrlGroup">
+              </div>
+              
+              <button type="submit" ng-click="search(ctrlGroup)" class="btn btn-default" ng-disabled="ctrlGroupForm.ctrlGroup.$invalid">Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div--> <!-- /Search Criteria -->
+
+       <!-- div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Cohort Name</th>
+                  <th>Last Updated By</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in myData">
+                  <td class="{{x.controlgroupid}}controlgroupname" data-title="Control Group Name"><a ng-click=viewGroupDetails(x.controlgroupid) style="cursor:pointer;">{{x.controlgroupname}}</a></td>
+                  <td class="{{x.controlgroupid}}lastupdatedon" data-title="Last Updated By">{{x.lastupdatedon}}
+                    <span style="float:right">
+                      <i style="margin-right:10px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.controlgroupid,x.controlgroupname)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{x.controlgroupid}}" class="fa fa-times" aria-hidden="true" ng-click="deleteGroup(x.controlgroupid,x.controlgroupname)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div--><!-- /Search Results -->
+
+
+
+</div> <!-- /container /controlGroupCtrl -->

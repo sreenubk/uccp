@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Organization</h3>
+</div>
+<form name="newOrgForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="orgName">Organization Name:<span class="red">*</span></label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="orgName" required name="orgName"><br/>
+  <div id="err-orgName" class="red"></div>
+  <label for="businessTypeCode">Description:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="businessTypeCode" required name="businessTypeCode">
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="viewOrgName(orgName,businessTypeCode);$close()" ng-disabled="newOrgForm.orgName.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

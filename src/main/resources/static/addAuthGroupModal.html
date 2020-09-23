@@ -1,0 +1,82 @@
+<style>
+  .typeahead-demo .custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #f9f9f9;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #868686;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+</style>
+
+<div class="modal-header">
+  <h3 class="modal-title">Add Authorization Group</h3>
+</div>
+<form name="authNewForm">
+<div class="modal-body">
+
+	<div class="form-group newAuthNameFrm">
+		  <label for="newAuthName">Authorization Group Name:</label>
+		  <input type="text" class="form-control" autocomplete="off" ng-model="newAuthName" required name="newAuthName">
+	</div>
+
+	<div class="form-group">
+	  	<label for="ctrlGroup">Control Group Name:</label>
+	  	<input type="text" class="form-control" id="ctrlGroupName" autocomplete="off" typeahead-no-results="noResults" ng-model="ctrlGroupName" required name="ctrlGroupName" uib-typeahead="grp as grp.controlgroupname for grp in groupNames | filter:{controlgroupname:$viewValue}">
+		 <div ng-if="noResults" class="noresult">
+		  No Results Found!
+		</div>
+	 </div>
+	 <div class="form-group">
+		  <label for="ctrlGroup">Organization Unit:</label>
+		  <select class="form-control" id="org" ng-model="org"  name="org">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in orgUnits" value="{{x.organisationunitid}}">{{x.name}}</option>
+		 </select>
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">Role:</label>
+		  <select class="form-control" id="role" ng-model="role"  name="role">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in roleLists" value="{{x.rolename}}">{{x.rolename}}</option>
+		 </select>	
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">Job:</label>
+		  <select class="form-control" id="job" ng-model="job"  name="job">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in jobLists" value="{{x.jobName}}">{{x.jobName}}</option>
+		  </select>
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">User:</label>
+		  <select class="form-control" id="user" ng-model="user"  name="user">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in userLists" value="{{x.username}}">{{x.username}}</option>
+		  </select>
+	</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-disabled="authNewForm.ctrlGroupName.$invalid" ng-click="saveAuthGroup(newAuthName,ctrlGroupName,org,role,job,user); (authDone==true)? $close():console.log('dsfsdf')">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+</form>

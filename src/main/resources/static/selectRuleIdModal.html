@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h3 class="modal-title">Select Rule ID</h3>
+</div>
+<form name="selectRuleForm">
+<div class="modal-body">
+<div class="form-group">
+  <div class="panel panel-default">
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Rule ID</th>
+                  <th>Reason Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-class="{selected:$index==selectedRuleRow}" data-ng-click="rowHighlightedRule($index,x.ruleID,x.reasonCode)" data-ng-repeat = "x in existCohListDataLocal.listCohortRules">
+                  <td class="{{x.ruleID}}ruleID" data-title="Rule ID" value = "x.ruleID" name = "selectedRuleID" ng-model = "selectedRuleID">{{x.ruleID}}</td>
+               		<td class="{{x.reasonCode}}reasonCode" data-title="Reason Code" value = "x.reasonCode" name = "selectedReasonCode" ng-model = "selectedReasonCode" >{{x.reasonCode}}</td>
+               </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="selectedRule(selectedRuleID,selectedReasonCode);$close()" ng-disabled="selectRuleForm.ruleID.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>
+
+

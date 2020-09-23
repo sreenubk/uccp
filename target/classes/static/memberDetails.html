@@ -1,0 +1,1216 @@
+<div class="container" ng-controller="memberDetailsCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Source System Record Detail</h2>
+	  </div>
+      <div class="">
+		  <h5 class="col-sm-10">Source System Record  : {{memDetailsData.MDMData[0].clientId.memIdnum + "-" + memDetailsData.MDMData[0].clientId.srcCode}} </h5>
+	  </div>
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     <!-- div class="panel panel-default">
+		<div class="panel-heading">
+			Person Details
+			<button class="btn btn-box-right collapsed" data-toggle="collapse"
+				href="#demo">
+				<i class=" fa fa-expand"></i>
+			</button>
+		</div>
+		<div id="demo" class="collapse in">
+			<div class="panel-body">
+				
+			
+			</div>
+
+		</div>
+	</div-->
+    
+    <div class="panel-group" id="accordion1">
+         <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse"data-parent = "accordion1" data-target="#demoExt" style ="cursor:pointer;">Extended Demographics</a>
+			<button class="btn btn-box-right collapsed" data-toggle="collapse"
+				data-target="#demoExt">
+				<i class=" fa fa-expand"></i>
+			</button>
+			</h4>
+		</div>
+		<div id="demoExt" class="collapse in">
+			<div class="panel-body">
+				 <div class = "col-sm-6">
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Name:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].clientNameList.clientName">
+                    		<span>{{y.firstName + " " + y.middleName + " "+ y.lastName}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>SSN:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].ssnlist.ssn">
+                    		<span>{{y.idNumber}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Date of Birth:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].dateofBirthList.dateofBirth">
+                    		<span>{{y.dateVal|date:'MM/dd/yyyy'}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Gender:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].genderList.gender">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Ethnicity:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].ethnicityList.ethnicity">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                     <!-- div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Race:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].raceList.race">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div-->
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>American Indian?</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span></span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Primary Language:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].primaryLanguageList.primaryLanguage">
+                    		<span>{{y.languageName}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Secondary Language:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].secondaryLanguageList.secondaryLanguage">
+                    		<span>{{y.languageName}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Spoken Language:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].spokenLanguageList.spokenLanguage">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Veteran:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].veteranStatusList.veteranStatus">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                 </div> 
+                 <div class = "col-sm-6">
+                 	<!--div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Primary Phone:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].primaryPhoneList.primaryPhone">
+                    		<span>{{y.phNumber}}</span>
+                    	</div>
+                    </div-->
+					<div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Cell Phone:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].mobilePhoneList.mobilePhone">
+                    		<span>{{y.phNumber}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Home Phone:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].homePhoneList.homePhone">
+                    		<span>{{y.phNumber}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Primary Email:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].primaryEmailAddressList.primaryEmailAddress">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Alternate Email:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].alternateEmailList.alternateEmail">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Home Address:	</span>
+                    	</div>
+                    	<div ng-repeat="y in memDetailsData.MDMData[0].homeAddressList.homeAddress"
+							class="col-sm-6">
+							<p class="ng-binding" style = "margin:0;">{{y.streetLine1 + " " + y.streetLine2 +
+								" " + y.streetLine3 + " " + y.streetLine4}}</p>
+							<p class="ng-binding" style = "margin:0">{{y.city}}, {{y.state}} {{y.zipCode}}</p><br/>
+						</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Mailing Address:</span>
+                    	</div>
+                    	<div ng-repeat="y in memDetailsData.MDMData[0].mailingAddressList.mailingAddress"
+							class="col-sm-6">
+							<p class="ng-binding" style = "margin:0;">{{y.streetLine1 + " " + y.streetLine2 +
+								" " + y.streetLine3 + " " + y.streetLine4}}</p>
+							<p class="ng-binding" style = "margin:0">{{y.city}}, {{y.state}} {{y.zipCode}}</p><br/>
+						</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Work Address:	</span>
+                    	</div>
+                    	<div ng-repeat="y in memDetailsData.MDMData[0].workAddressList.workAddress"
+							class="col-sm-6">
+							<p class="ng-binding" style = "margin:0;">{{y.streetLine1 + " " + y.streetLine2 +
+								" " + y.streetLine3 + " " + y.streetLine4}}</p>
+							<p class="ng-binding" style = "margin:0">{{y.city}}, {{y.state}} {{y.zipCode}}</p><br/>
+						</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Other Address:</span>
+                    	</div>
+                    	<div ng-repeat="y in memDetailsData.MDMData[0].otherAddressList.otherAddress"
+							class="col-sm-6">
+							<p class="ng-binding" style = "margin:0;">{{y.streetLine1 + " " + y.streetLine2 +
+								" " + y.streetLine3 + " " + y.streetLine4}}</p>
+							<p class="ng-binding" style = "margin:0">{{y.city}}, {{y.state}} {{y.zipCode}}</p><br/>
+						</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Contact Info Updated:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].lastUpdateList.lastUpdate">
+                    		<span>{{y.attrVal|date:'MM/dd/yyyy hh:mm:ss a'}}</span>
+                    	</div>
+	                </div>
+                 </div>
+                 <div class="panel-heading col-sm-12 paddingZero">
+		                <h5>
+		                    <b>Living Arrangements</b>
+		                </h5>
+		            </div>
+		            <div id="collapseInOne">
+		                <div class="panel-body">
+		                	<div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Residential Status:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].residentialStatusList.residentialStatus">
+		                    		<span>{{y.attrVal}}</span>
+		                    	</div>
+		                    </div>
+		                   <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Current Living Arrangements:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].currentLivingArrangementsList.currentLivingArrangements">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span># of Children Under 18:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].nbrChildrenUnder18List.nbrChildrenUnder18">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span># of Children Under 5:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].nbrChildrenUnder5List.nbrChildrenUnder5">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+				         </div>
+		            </div>
+		            <div class="panel-heading col-sm-12 paddingZero">
+		                <h5>
+		                    <b>Employment</b>
+		                </h5>
+		            </div>
+		            <div id="collapseInOne">
+		                <div class="panel-body">
+		                   <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Employment Status:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].employmentStatusList.employmentStatus">
+		                    		<span>{{y.attrVal}}</span>
+		                    	</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Current Work Experience:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].currentWorkExperienceList.currentWorkExperience">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Last Date Worked:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].dateLastWorkedList.dateLastWorked">
+                    				<span>{{y.dateVal|date:'MM/dd/yyyy'}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span># of Paid Work Days in Past 30 Days:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].paidDaysLast30List.paidDaysLast30">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Enrolled in Job Training:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].enrolledInJobTrainingList.enrolledInJobTraining">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+				         </div>
+		            </div>
+		              <div class="panel-heading paddingZero">
+		                <h5>
+		                    <b>Education</b>
+		                </h5>
+		            </div>
+		            <div id="collapseInOne">
+		                <div class="panel-body" style = "padding-top:0;">
+		                   <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>High School Graduate:	</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].graduatedFromHighSchoolList.graduatedFromHighSchool">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Enrolled in School:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].enrolledinSchoolList.enrolledinSchool">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>School Information:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].schoolNameList.schoolName">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+				         </div>
+		            </div>
+		            <div class="panel-heading paddingZero">
+		                <h5>
+		                    <b>Health Information</b>
+		                </h5>
+		            </div>
+		            <div id="collapseInOne">
+		                <div class="panel-body" style = "padding-top:0;">
+		                   <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Pregnancy Status:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].pregnancyStatusList.pregnancyStatus">
+                    				<span>{{y.attrVal}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Birth Due Date:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].childDueDateList.childDueDate">
+                    				<span>{{y.dateVal|date:'MM/dd/yyyy'}}</span>
+                    			</div>
+		                    </div>
+		                    <div class = "col-sm-12">
+		                    	<div class = "col-sm-6">
+		                    		<span>Death Date:</span>
+		                    	</div>
+		                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.MDMData[0].dateofDeathList.dateofDeath">
+                    				<span>{{y.attrVal|date:'MM/dd/yyyy'}}</span>
+                    			</div>
+		                    </div>
+				         </div>
+		            </div>
+				</div>
+			</div>
+		</div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion1" data-target="#collapseLeg" style ="cursor:pointer;">Legal</a>
+                </h4>
+            </div>
+            <div id="collapseLeg" class="panel-collapse collapse">
+	          <div class="panel-body">
+                   <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Type of Visa:	</span>
+                    	</div>
+                    	<div class = "col-sm-8" ng-repeat="y in memDetailsData.MDMData[0].visaTypeList.visaType">
+                 				<span>{{y.attrVal}}</span>
+                 		</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Legal Guardian First Name:</span>
+                    	</div>
+                    	<div class = "col-sm-8">
+                 				<span>{{memDetailsData.ODSData.Legal[0].lglGrdianFirstName}}</span>
+                 		</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Legal Guardian Last Name:</span>
+                    	</div>
+                    	<div class = "col-sm-8">
+                 				<span>{{memDetailsData.ODSData.Legal[0].lglGrdianLastName}}</span>
+                 		</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Legal Guardian Relationship:</span>
+                    	</div>
+                    	<div class = "col-sm-8">
+                 				<span>{{memDetailsData.ODSData.Legal[0].lglGrdianRel}}</span>
+                 		</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Conservator Name:</span>
+                    	</div>
+                    	<div class = "col-sm-8">
+                 				<span>{{memDetailsData.ODSData.Legal[0].conservator}}</span>
+                 		</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Conservatorship Status:</span>
+                    	</div>
+                    	<div class = "col-sm-8" >
+                 				<span>{{memDetailsData.ODSData.Legal[0].conservatorStatus}}</span>
+                 		</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Decision Maker Name:</span>
+                    	</div>
+                    	<div class = "col-sm-8" >
+                 				<span>{{memDetailsData.ODSData.Legal[0].decisionMaker}}</span>
+                 		</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-4">
+                    		<span>Decision Maker Relationship:</span>
+                    	</div>
+                    	<div class = "col-sm-8">
+                 				<span>{{memDetailsData.ODSData.Legal[0].decisionMakerRel}}</span>
+                 		</div>
+                    </div>
+                 
+		         </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion1" data-target="#collapseCh" style ="cursor:pointer;">Child Support</a>
+                </h4>
+            </div>
+            <div id="collapseCh" class="panel-collapse collapse">
+                <div class="panel-body">
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Child Support Case Payee:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.ChildSupport[0].chldSupCasePayee}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Child Support Case Payor:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span> {{memDetailsData.ODSData.ChildSupport[0].chldSupCasePayor}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Name of Absent Parent:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.ChildSupport[0].absntParentName}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Absent Parent Relationship:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.ChildSupport[0].absntParentRel}}</span>
+                    	</div>
+                    </div>
+                    <!--div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Children Living with Someone Else Because of Parental Rights Terminated:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.PSC[0].numChldLwseDueToPrbt}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Children Living with Someone Else Because of Child Protection Order:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.PSC[0].numChldLwseDueToCpo}}</span>
+                    	</div>
+                    </div-->
+				</div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion1" data-target="#collapseCr" style ="cursor:pointer;">Criminal Justice</a>
+                </h4>
+            </div>
+            <div id="collapseCr" class="panel-collapse collapse">
+                <div class="panel-body">
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>History of violence:</span>
+                    	</div>
+                    	<div class = "col-sm-6" ng-repeat="y in memDetailsData.ODSData.historyofViolenceList.historyofViolence">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>History of self-injury:</span>
+                    	</div>
+                    	<div class = "col-sm-6"  ng-repeat="y in memDetailsData.ODSData.historyofSelfInjuryList.historyofSelfInjury">
+                    		<span>{{y.attrVal}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6" >
+                    		<span>Admission Date: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].admissionDate|date:'MM/dd/yyyy'}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Does episode involve domestic abuse:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].episodeInvlvdDomAbuse}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Does episode involve physical abuse:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].episodeInvlvdPhyAbuse}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Does episode involve sexual abuse:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].episodeInvlvdSexAbuse}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Criminal Justice Status:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].cjStatus}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Arrests in Last 30 Days:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].numArrestPast30d}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Arrests in Last 6 Months: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].numArrestPast6m}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Jail Days in Last 30:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].numJailDaysPast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Prison Days in Last 30:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].numPrisonDaysPast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Felony Conviction?</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].felonyConviction}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Involved in Domestic Abuse:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].invlvdInDomAbuse}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Type of Abuse:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].typeOfAbuse}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Name of Abuser:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.CriminalJustice[0].abuserName}}</span>
+                    	</div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion1" data-target="#collapseSx" style ="cursor:pointer;">Health Information</a>
+                </h4>
+            </div>
+            <div id="collapseSx" class="panel-collapse collapse">
+                <div class="panel-body">
+                	<div >
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Disabilities:</span>
+                    	</div>
+                    	<div class = "col-sm-6" >
+                    		<span>{{memDetailsData.ODSData.HealthInfo[0].disabilities}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Disability Status:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.HealthInfo[0].disabilityStatus}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Smoker Status: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.HealthInfo[0].smokerStatus}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>In the past 30 days, how often did you use tobacco/nicotine products:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.HealthInfo[0].numTobacNicUsePast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Hospital Overnights in Past 30:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.HealthInfo[0].numHospOvernightPast30D}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Times in Emergency Room in Past 30:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.HealthInfo[0].numEmgncyRmPast30D}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Communicable Diseases: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span></span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Pregnancy Status:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.MDMData[0].pregnancyStatusList.pregnancyStatus[0].attrVal}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Due Date: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.MDMData[0].childDueDateList.childDueDate[0].dateVal|date:'MM/dd/yyyy'}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Death Date:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.MDMData[0].dateofDeathList.dateofDeath[0].attrVal|date:'MM/dd/yyyy'}}</span>
+                    	</div>
+                    </div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion1" data-target="#collapseMen" style ="cursor:pointer;">Mental Health</a>
+                </h4>
+            </div>
+            <div id="collapseMen" class="panel-collapse collapse">
+                <div class="panel-body">
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of 24hr Psychiatric Facility Stays in Past 30 Days:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.MentalHealth[0].num24hrPsyFacStayPast30d}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Times Outpatient Emergency MH Services in Past 30 Days: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.MentalHealth[0].numOpEmgncyMhsPast30d}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Mental Health Medication in Past 30 Days: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.MentalHealth[0].mentalHealthMedsPast30d}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Mental Illness Diagnosed:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.MentalHealth[0].mentalIllnessDiagnosed}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Suicide Attempts:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.MentalHealth[0].numSuicideAttempt}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>History of suicide:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.MentalHealth[0].histOfSuicide}}</span>
+                    	</div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion1" data-target="#collapseAl" style ="cursor:pointer;">Alcohol & Drug Use </a>
+                </h4>
+            </div>
+            <div id="collapseAl" class="panel-collapse collapse">
+                <div class="panel-body">
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Admission Date:  </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].admissionDate|date:'MM/dd/yyyy'}}</span>
+                    	</div>
+                    </div>
+                     <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Type of Treatment Service:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].admissionType}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Prior Episodes:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].numPriorAdmission}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Days No Alcohol Used in Past 30:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].numNoAlcoholDaysPast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Days Alcohol Used in Past 30:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].numAlcoholUsedDaysPast30d}}</span>
+                    	</div>
+                    </div>
+                    <!--div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Days Living w/User of Alcohol/Drugs in Past 30:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span></span>
+                    	</div>
+                    </div-->
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Discharge Status: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].dischargeStatus}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Injection Drug User: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].injectionDrugUser}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Used Needles in Past 12 Months: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].usedNeedlesPast12m}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Days IV Used in Past 30: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].numDaysIvUsedPast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12"  style = "padding-top:10px;">
+                    	<div class = "col-sm-6">
+                    		<span>Primary Drug Name: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].priDrugName}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Primary Drug Type: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].priDrugType}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Age of First Use: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].priAgeFirstUse}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Days Used in Past 30: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].priNumDaysUsedPast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Route of Administration: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].priRouteOfAdmin}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12" style = "padding-top:10px;">
+                    	<div class = "col-sm-6">
+                    		<span>Secondary Drug Name: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].secDrugName}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Secondary Drug Type:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].secDrugType}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Age of First Use: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].secAgeFirstUse}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Days Used in Past 30: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].secNumDaysUsedPast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Route of Administration: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].secRouteOfAdmin}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12" style = "padding-top:10px;">
+                    	<div class = "col-sm-6">
+                    		<span>Tertiary Drug Name: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].terDrugName}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Tertiary Drug Type:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].terDrugType}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Age of First Use: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].terAgeFirstUse}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span># of Days Used in Past 30: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].terNumDaysUsedPast30d}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Route of Administration: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].terRouteOfAdmin}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Service (ADS): </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsEncounterSrcVo[0].serviceAds}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Diagnosis for this Service: </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsEncounterSrcVo[0].diagnosisForService}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Drug Test:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsTestResultSrcVo[0].drugTest}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Date (Test Results): </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsTestResultSrcVo[0].testResultDate|date:'MM/dd/yyyy'}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Type (Test Results): </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsTestResultSrcVo[0].testResultType}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Specimen #:</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsTestResultSrcVo[0].specimenNum}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Positive Confirmed (Drug Test): </span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsTestResultSrcVo[0].testConfirmedPos}}</span>
+                    	</div>
+                    </div>
+                    <div class = "col-sm-12">
+                    	<div class = "col-sm-6">
+                    		<span>Positive Unconfirmed (Drug Test):</span>
+                    	</div>
+                    	<div class = "col-sm-6">
+                    		<span>{{memDetailsData.ODSData.AlcoholDrugUse[0].cpAdsTestResultSrcVo[0].testUnconfirmedPos}}</span>
+                    	</div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion1" data-target="#collapseHR" style ="cursor:pointer;">Human Services Programs</a>
+                </h4>
+            </div>
+            <div id="collapseHR" class="panel-collapse collapse">
+                <div class="panel-body">
+                	<div  ng-repeat="x in memDetailsData.MDMData[0].programParticipationList.programParticipation">
+	                	<div class="panel-heading paddingZero">
+			                <h5>
+			                    <b>Program {{$index+1}}</b>
+			                </h5>
+			            </div>
+			            <div id="collapseInOne">
+			                <div class="panel-body col-sm-12" style = "padding: 0 0 15px 0;">
+			                	<div class = "col-sm-6">
+				                  <div class = "col-sm-12">
+				                  	<div class = "col-sm-6">
+				                  		<span>Program Name:</span>
+				                  	</div>
+				                  	<div class = "col-sm-6">
+	                    				<span>{{x.programName}}</span>
+	                    			</div>
+				                  </div>
+				                  <div class = "col-sm-12">
+				                  	<div class = "col-sm-6">
+				                  		<span>Program ID:</span>
+				                  	</div>
+				                  	<div class = "col-sm-6">
+	                    				<span>{{x.programId}}</span>
+	                    			</div>
+				                  </div>
+				                  <div class = "col-sm-12">
+				                  	<div class = "col-sm-6">
+				                  		<span>Participation Status:</span>
+				                  	</div>
+				                  	<div class = "col-sm-6">
+	                    				<span>{{x.participationType}}</span>
+	                    			</div>
+				                  </div>
+				                  <div class = "col-sm-12">
+				                  	<div class = "col-sm-6">
+				                  		<span>Case ID:</span>
+				                  	</div>
+				                  	<div class = "col-sm-6">
+	                    				<span>{{x.caseId}}</span>
+	                    			</div>
+				                  </div>
+			                	</div>
+			                	<div class = "col-sm-6">
+			                		 <div class = "col-sm-12">
+				                   	<div class = "col-sm-6">
+				                   		<span>Program Status: </span>
+				                   	</div>
+				                   	<div class = "col-sm-6">
+	                    				<span>{{x.programStatus}}</span>
+	                    			</div>
+				                  </div>
+				                  <div class = "col-sm-12">
+				                  	<div class = "col-sm-6">
+				                  		<span>Start Date:</span>
+				                  	</div>
+				                  	<div class = "col-sm-6">
+	                    				<span>{{x.programStartDate|date:'MM/dd/yyyy'}}</span>
+	                    			</div>
+				                  </div>
+				                  <div class = "col-sm-12">
+				                  	<div class = "col-sm-6">
+				                  		<span>End Date:</span>
+				                  	</div>
+				                  	<div class = "col-sm-6">
+	                    				<span>{{x.programEndDate|date:'MM/dd/yyyy'}}</span>
+	                    			</div>
+				                  </div>
+				                   <div class = "col-sm-12">
+				                  	<div class = "col-sm-6">
+				                  		<span>Privileged Record?</span>
+				                  	</div>
+				                  	<div class = "col-sm-6">
+	                    				<span>{{x.privilegedRecord}}</span>
+	                    			</div>
+				                  </div>
+			                	</div>
+				                 
+					    	</div>
+			            </div>
+			           </div>
+			           <div ng-repeat="x in memDetailsData.MDMData[0].disabilityList.disability">
+				            <div class="panel-heading paddingZero">
+				                <h5>
+				                    <b>Disability {{$index+1}}</b>
+				                </h5>
+				            </div>
+				            <div id="collapseInOne">
+				                <div class="panel-body" style = "padding: 0 0 15px 0;">
+					                  <div class = "col-sm-12">
+					                   	<div class = "col-sm-4">
+					                   		<span>Disability: </span>
+					                   	</div>
+					                   	<div class = "col-sm-8">
+		                    				<span>{{x.disabilityName}}</span>
+		                    			</div>
+					                  </div>
+					                  <div class = "col-sm-12">
+					                  	<div class = "col-sm-4">
+					                  		<span>Disability Start Date: </span>
+					                  	</div>
+					                  	<div class = "col-sm-8">
+		                    				<span>{{x.disabilityStartDate|date:'MM/dd/yyyy'}}</span>
+		                    			</div>
+					                  </div>
+					                  <div class = "col-sm-12">
+					                  	<div class = "col-sm-4">
+					                  		<span>Disability End Date: </span>
+					                  	</div>
+					                  	<div class = "col-sm-8">
+		                    				<span>{{x.disabilityEndDate|date:'MM/dd/yyyy'}}</span>
+		                    			</div>
+					                  </div>
+						    	</div>
+				            </div>
+				          </div>
+		          	</div>
+            	</div>
+       		 </div>
+    </div>
+  
+
+
+</div> <!-- /container /controlGroupCtrl -->

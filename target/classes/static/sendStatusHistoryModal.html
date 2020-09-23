@@ -1,0 +1,44 @@
+<div class="modal-header">
+  <h3 class="modal-title">View Send History</h3>
+</div>
+<form name="selectRuleForm">
+<div class="modal-body">
+<div class="form-group">
+  <div class="panel panel-default">
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Target ID</th>
+                  <th>Date Sent</th>
+                  <th>Status</th>
+                  <th>Target Transaction ID</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-ng-repeat = "x in sendHistorydata">
+                  <td class="{{x.targetID}}targetID" data-title="Target ID" value = "x.targetID" name = "targetID" >{{x.targetID}}</td>
+               	  <td class="{{x.sendDate}}sendDate" data-title="Send Date" value = "x.sendDate" name = "sendDate" >{{x.sendDate}}</td>
+            	   <td class="{{x.sendStatus}}sendStatus" data-title="Send Status" value = "x.sendStatus" name = "sendStatus" >{{x.sendStatus}}</td>
+            	   <td class="{{x.targetTransID}}targetTransID" data-title="Tgt Trans ID" value = "x.targetTransID" name = "targetTransID" >{{x.targetTransID}}</td>
+            	    </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+</div>
+</div>
+
+
+<div class="modal-footer">
+ <button class="btn btn-warning" type="button" ng-click="$close()">Ok</button>
+</div>
+
+</form>
+
+

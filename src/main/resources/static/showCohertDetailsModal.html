@@ -1,0 +1,75 @@
+ <div class="modal-content showCohertDetailsModal" >
+<div class="modal-header">
+  <h3 class="modal-title">View Cohort</h3>
+</div>
+<form name="newCohortForm">
+<div class="modal-body">
+<div class="form-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row">
+                <label for="cohortDetail" class="col-sm-6">Cohort Name: {{addCohort.name}}</label>
+                <label for="cohortDetail" class="col-sm-6">Cohort Description: {{addCohort.cohortdescription}}</label>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Cohort Rules
+          
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Rule ID</th>
+                  <th>Rule Short Description</th>
+                  <th>Rule Description</th>
+                  <th>Rule Action</th>
+                  <th>Reason Code</th>
+                  <th>Is Enabled</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                </tr>
+              </thead>
+              <tbody class="tranBody">
+           		<tr ng-repeat="x in existRuleData.listCohortRules">
+                  <td class="" data-title="Rule ID">{{x.ruleID}}</td>
+                  <td class="" data-title="Rule Short Description">{{x.ruleShortDesc}}</td>
+                  <td class="" data-title="Rule Description">{{x.ruleDescription}}</td>
+                  <td class="" data-title="Rule Action">{{x.ruleAction}}</td>
+                  <td class="" data-title="Reason Code">{{x.reasonCode}}</td>
+                  <td class="" data-title="Is Enabled">{{x.isEnabled}}</td>
+                  <td class="" data-title="Start Date">{{x.startDate}}</td>
+                  <td class="" data-title="End Date">{{x.endDate}}</td>
+                </tr>
+              </tbody>
+            </table>
+            
+                  
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+
+
+<div class="modal-footer">
+      <button class="btn btn-warning" type="button" ng-click="$close()">Ok</button>
+</div>
+
+</form>
+</div>
+
+
+

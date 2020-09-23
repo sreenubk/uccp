@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Cohort Details</h3>
+</div>
+<form name="editCohertForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="cohertDetail">Cohort Name:<span class="red">*</span></label>
+  	<div class="form-control" ng-model="selectedCohortName"  required name="newCohert">{{selectedCohortName}}</div>
+  </div>
+  <div class="form-group">
+  	<label for="cohertDetail">Cohort Description:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedCohortDesc"  required placeholder="{{selectedCohortDesc}}" name="newCohertDesc">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editCohortSave(selectedCohortDesc);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

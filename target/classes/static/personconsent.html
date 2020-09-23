@@ -1,0 +1,349 @@
+<style>
+.ui-widget-header .ui-icon {
+	background-image: url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/images/ui-icons_444444_256x240.png");
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon,
+.ui-button:hover .ui-icon,
+.ui-button:focus .ui-icon {
+	background-image: url("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/images/ui-icons_555555_256x240.png");
+}
+</style>
+
+<div class="container" ng-controller="personConsentCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Person Consent  </h2>   
+		  
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+     <div class="panel panel-default">
+        <div class="panel-heading">Fill in the below details:
+          
+        </div>
+         <div id="demo" class="">
+          <div class="panel-body">
+	     	<!-- <form name="ctrlGroupForm"> -->
+	     	<form name="upload" id="upload" class="form" data-ng-submit="submitFormData()">
+	     		  	
+	     		  <div class="formDivider col-sm-11">
+			        <span>CONSENT INFORMATION</span>
+			      </div>
+	     		  
+	     		  <div class="row col-sm-6">
+	     		  		<div class="form-group col-sm-12">
+	     		  		<div id="err-startDate" class="red"></div>
+		                	<label for="startdate">Start Date:<span class="red">*</span></label>
+		                	<input class="datepicker form-control" data-date-format="mm-dd-yyyy" placeholder="Start Date" autocomplete="off" id="startdate" class="form-control" ng-model="startdate" name="startdate">
+		                	<div id="err-startdate" class="red hide"></div>
+		                </div>	
+		                <div class="form-group col-sm-12">
+		                <div id="err-endDate" class="red"></div>
+	     		  			<label for="enddate" class="martop15">End Date:<span class="red">*</span></label>
+	                		<input class="datepicker form-control" data-date-format="mm-dd-yyyy" placeholder="End Date" autocomplete="off" id="enddate" class="form-control" ng-model="enddate" name="enddate">
+	                		<div id="err-enddate" class="red"></div>
+	     		  		</div>							
+	     		  </div>
+	     		  
+	     		  <div class="row col-sm-6">
+	     		  		<div class="form-group col-sm-12">
+	     		  		<div id="err-selCheckBox" class="red"></div>	  		
+		              	<label for = "checkBoxModal">Please select the checkbox(es) the client would like to permit access to:<span class="red">*</span></label>
+		              	<div class="form-group col-sm-12">
+		              	
+		              	
+		              
+			                <div class="checkbox col-sm-6" ng-repeat="x in listConsentGroup |limitTo:10">
+						      <label><input type="checkbox" class="checkBoxModal" value="{{x.consentgroupid}}" name = "checkBoxModal"
+						        ng-model="x.checked"
+						        ng-click="toggleCheckBox(x)"
+						        ng-checked="selCheckBox"
+						        >{{x.name}}</label>
+						    </div>
+						    
+						    
+					    </div>
+		              </div>
+	     		  </div>
+	     		 
+	              
+	              
+	              
+	              <div class="formDivider col-sm-11">
+			        <span>CLIENT INFORMATION</span>
+			      </div>
+			      
+			      <div class="row col-sm-12">
+	              	<div class="form-group col-sm-6">
+		                <label for="customerName">Customer Identifier:<span class="red">*</span></label>
+		                <!-- input type="text" class="form-control" autocomplete="off" ng-model="customerName"  placeholder="Customer Identifier" name="customerName" class="customerName"-->
+		                 <select class="form-control" autocomplete="off"  name="customerName" class="customerName" value="{{x.customerName}}" ng-model="customerNameModal" ng-change="getId()">
+		                 	<option  disabled selected value>Please Select</option>
+		                 	<option value="{{x.customerName}}" ng-repeat="x in listRefData" >{{x.customerName}}
+				            </option>
+				         </select>
+		                	<div id="err-customerName" class="red "></div>
+		              </div>
+		              <div class="form-group col-sm-6">
+		                 <label for="clientId">Client ID:</label>
+		                 <div class="form-control">
+						    <span >{{selClientID}}</span>
+						 </div>
+		              </div>
+	              </div>
+			      
+			      <div class="row col-sm-12">
+			      	<div class="form-group col-sm-6">
+	             		<label for="street">Street:<span class="red">*</span></label>
+	                	<input type="text" class="form-control" autocomplete="off" ng-model="street"  placeholder="Street" name="street" class="street">
+	                	<div id="err-street" class="red "></div>
+	              	</div>	
+	              	<div class="form-group col-sm-6">
+		                <label for="suite">Apt/Suite:<span class="red">*</span></label>
+		                <input type="text" class="form-control" autocomplete="off" ng-model="appSuite"  placeholder="Apt/Suite" name="suite" class="suite">
+		                <div id="err-suite" class="red "></div>
+		              </div>
+			      </div>
+			      
+			      <div class="row col-sm-12">
+			      	
+		              <div class="form-group col-sm-6">
+		                <label for="city">City:<span class="red">*</span></label>
+		                <input type="text" class="form-control" autocomplete="off" ng-model="city"  placeholder="City" name="city" class="city">
+		                <div id="err-city" class="red "></div>
+		              </div>
+		              <div class="form-group col-sm-6">
+	                	<label for="state">State:<span class="red">*</span></label>
+		                <select class="form-control" autocomplete="off"  ng-model="state"  name="state" class="state">
+				                  <option value="">Please Select
+				                  
+				            </option><option value="AL">Alabama
+				            
+				            </option><option value="AK">Alaska
+				            
+				            </option><option value="AZ">Arizona
+				            
+				            </option><option value="AR">Arkansas
+				            
+				            </option><option value="CA">California
+				            
+				            </option><option value="CO">Colorado
+				            
+				            </option><option value="CT">Connecticut
+				            
+				            </option><option value="DE">Delaware
+				            
+				            </option><option value="DC">District of Columbia
+				            
+				            </option><option value="FL">Florida
+				            
+				            </option><option value="GA">Georgia
+				            
+				            </option><option value="HI">Hawaii
+				            
+				            </option><option value="ID">Idaho
+				            
+				            </option><option value="IL">Illinois
+				            
+				            </option><option value="IN">Indiana
+				            
+				            </option><option value="IA">Iowa
+				            
+				            </option><option value="KS">Kansas
+				            
+				            </option><option value="KY">Kentucky
+				            
+				            </option><option value="LA">Louisiana
+				            
+				            </option><option value="ME">Maine
+				            
+				            </option><option value="MD">Maryland
+				            
+				            </option><option value="MA">Massachusetts
+				            
+				            </option><option value="MI">Michigan
+				            
+				            </option><option value="MN">Minnesota
+				            
+				            </option><option value="MS">Mississippi
+				            
+				            </option><option value="MO">Missouri
+				            
+				            </option><option value="MT">Montana
+				            
+				            </option><option value="NE">Nebraska
+				            
+				            </option><option value="NV">Nevada
+				            
+				            </option><option value="NH">New Hampshire
+				            
+				            </option><option value="NJ">New Jersey
+				            
+				            </option><option value="NM">New Mexico
+				            
+				            </option><option value="NY">New York
+				            
+				            </option><option value="NC">North Carolina
+				            
+				            </option><option value="ND">North Dakota
+				            
+				            </option><option value="OH">Ohio
+				            
+				            </option><option value="OK">Oklahoma
+				            
+				            </option><option value="OR">Oregon
+				            
+				            </option><option value="PA">Pennsylvania
+				            
+				            </option><option value="PR">Puerto Rico
+				            
+				            </option><option value="RI">Rhode Island
+				            
+				            </option><option value="SC">South Carolina
+				            
+				            </option><option value="SD">South Dakota
+				            
+				            </option><option value="TN">Tennessee
+				            
+				            </option><option value="TX">Texas
+				            
+				            </option><option value="UT">Utah
+				            
+				            </option><option value="VT">Vermont
+				            
+				            </option><option value="VA">Virginia
+				            
+				            </option><option value="WA">Washington
+				            
+				            </option><option value="WV">West Virginia
+				            
+				            </option><option value="WI">Wisconsin
+				            
+				            </option><option value="WY">Wyoming
+				            
+				            </option><option value="99">Other
+				            
+				          </option>
+				                </select>
+		                <div id="err-state" class="red "></div>
+		              </div>
+			      </div>
+	              
+	              <div class="row col-sm-12">
+	              	  <div class="form-group col-sm-6">
+		                <label for="zipCode">Zip Code:<span class="red">*</span></label>
+		                <input type="text" class="form-control" autocomplete="off" ng-model="zipCode"  placeholder="Zip Code" name="zipCode" class="zipCode">
+		                <div id="err-zipCode" class="red "></div>
+		              </div>
+		              <div class="form-group col-sm-6">
+		                <label for="contactphone">Contact Phone:</label>
+		                <input type="text" class="form-control" autocomplete="off" ng-model="contactphone" placeholder="Contact Phone" name="contactphone">
+		                <div id="err-contactphone" class="red hide"></div>
+		              </div>
+		              
+		          </div>
+	              
+	              <div class="row col-sm-12">
+	              		<div class="form-group col-sm-6">
+			                <label for="identificationno">Identification Number:</label>
+			                <input type="text" class="form-control" autocomplete="off" ng-model="identificationno"  placeholder="Identification Number" name="identificationno">
+			                <div id="err-identificationno" class="red hide"></div>
+			              </div>
+			              
+			              <div class="form-group col-sm-6">
+			                <label for="identificationtype">Identification Type:</label>
+			                <input type="text" class="form-control" autocomplete="off" ng-model="identificationtype"  placeholder="Identification Type" name="identificationtype">
+			                <div id="err-identificationtype" class="red hide"></div>
+			              </div>
+	              	
+	              </div>
+	            
+	              
+	              
+	              
+	              
+	              <div class="formDivider col-sm-11">
+			        <span>THIRD PARTY</span>
+			      </div>
+			      
+			      <div class="row col-sm-12">
+			      	<div class="form-group col-sm-6">
+		                <label for="thirdpartyrelationship">Third Party Relationship:</label>
+		                <select class="form-control" autocomplete="off"  ng-model="thirdpartyrelationship"  name="thirdpartyrelationship" class="thirdpartyrelationship">
+				            <option value="">Please Select</option>
+				            <option value="Legal Guardian">Legal Guardian</option>
+				            <option value="Family Member">Family Member</option>
+				            <option value="Caseworker">Caseworker</option>
+				            <option value="Other">Other</option>
+				         </select>
+		                <div id="err-thirdpartyrelationship" class="red "></div>
+		              </div>
+		              
+		              <div class="form-group col-sm-6">
+		                <label for="thirdpartyfirstname">Third Party First Name:</label>
+		                <input type="text" class="form-control" autocomplete="off" ng-model="thirdpartyfirstname"  placeholder="Third Party First Name" name="thirdpartyfirstname">
+		                <div id="err-thirdpartyfirstname" class="red "></div>
+		              </div>
+			      </div>
+			      
+			      <div class="row col-sm-12">
+			      		<div class="form-group col-sm-6">
+			                <label for="thirdpartyotherrelationship">Third Party Other Relationship:</label>
+			                <input type="text" class="form-control" autocomplete="off" ng-model="thirdpartyotherrelationship"  placeholder="Third Party Other Relationship" name="thirdpartyotherrelationship">
+			                <div id="err-thirdpartyotherrelationship" class="red "></div>
+			              </div>
+			              
+			              <div class="form-group col-sm-6">
+			                <label for="thirdpartylastname">Third Party Last Name:</label>
+			                <input type="text" class="form-control" autocomplete="off" ng-model="thirdpartylastname"  placeholder="Third Party Last Name" name="thirdpartylastname">
+			                
+			              </div>
+			      </div>
+	             
+	              
+	              <div class="formDivider col-sm-11">
+			        <span>UPLOAD SIGNED CONSENT FORM</span>
+			      </div>
+			      
+			      <div class="row col-sm-12">
+			      	<div class="form-group col-sm-6">
+			      		<input type="file" style="display:inline-block" autocomplete="off" name="file" multiple onchange="angular.element(this).scope().uploadedFile(this)" />
+	              		<!-- <button type="button"  class="btn btn-default" ng-click="addFile()">Upload</button> -->
+	              		<div id="err-file" class="red "></div>
+	              	</div>
+			      </div>
+	              
+	             
+				              
+	              <div class="form-group col-sm-12">
+	              	<button type="submit"  class="btn btn-default" ng-disabled="ctrlGroupForm.ctrlGroup.$invalid">Submit</button>
+	              	<button type="reset"  class="btn btn-default" ng-click="resetConsent()">Reset</button>
+	              </div>
+	         </form>
+     	 </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+     
+      
+
+<script>
+var dateToday = new Date();
+$('.datepicker').datepicker({
+    startDate: '-3d',
+    minDate: dateToday
+});
+</script>
+
+</div> <!-- /container /personConsentCtrl -->
+

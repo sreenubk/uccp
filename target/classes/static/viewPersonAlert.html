@@ -1,0 +1,75 @@
+<div class="container" ng-controller="viewPersonAlertCtrl">
+
+      
+      <div class="row toprow">
+		  <h2 class="col-sm-6">Person Alert</h2>
+	  </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row">
+                <label for="cohortDetail" class="col-sm-4">Cohort: {{addCohort.name}}</label>
+                <label for="cohortDetail" class="col-sm-4">Description: {{addCohort.cohortdescription}}</label>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Rules
+          
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                 <th>Rule ID</th>
+                  <th>Rule Name</th>
+                  <th>Description</th>
+                  <th>Action</th>
+                  <th>Reason Code</th>
+                  <th>Is Enabled</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>Select</th>
+                </tr>
+              </thead>
+              <tbody class="tranBody">
+           	  </tbody>
+            </table>
+            <div style= "text-align:right; margin-top:10px;">
+            		<button class="btn btn-default" type="submit" ng-click="sendRegRequest(addCohort.name,lst);$close()" ng-disabled="selectCohortForm.cohortid.$invalid">Send Alert Request</button>
+		     </div>
+                  
+          </div>
+        </div>
+        
+      </div><!-- /Transactions -->
+
+
+     
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

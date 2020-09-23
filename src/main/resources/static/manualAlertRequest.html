@@ -1,0 +1,139 @@
+<div class="container" ng-controller="manualAlertRequestCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Create Alert Request</h2>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Alert Request
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="registrationForm" id= "regForm">
+            	<h5 class = "headingText"><span>Client Information</span></h5>
+             	<div class="form-group col-sm-12">
+				  	 <div class="form-group col-sm-4">
+			 	   		<input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="firstName" required placeholder="First Name" name="firstName">
+	              </div>
+				   	<div class="form-group col-sm-4">
+					</div>
+					<div class="form-group col-sm-4">
+						 <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="sourceSystem" required placeholder="Source System" name="sourceSystem">
+	                </div>
+		      	</div>
+		      	<div class="form-group col-sm-12">
+				  	 <div class="form-group col-sm-4">
+			 	   		 <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="lastName" required placeholder="Last Name" name="lastName">
+	                </div>
+				   	<div class="form-group col-sm-4">
+					</div>
+					<div class="form-group col-sm-4">
+						<input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="sourceSystemID" required placeholder="Source System ID" name="sourceSystemID">
+	              </div>
+		      	</div>
+		      	<h5 class = "headingText"><span>Registration Request Information</span></h5>
+		      	<div class="form-group col-sm-7" style = "padding-left:0;padding-right:0;">
+		      		<div class="form-group col-sm-12">
+			      	  <div class="form-group col-sm-3">
+		                <div class ="textClass"><span>Cohort Name</span></div>
+		              </div>
+		              <div class="form-group col-sm-4">
+		                <div class="form-control" ng-model="selectedCohortID" name="selectedCohortID" >{{selectedCohortID}}</div>
+		              </div>
+		              <div class="form-group col-sm-4" style = "margin-top:5px">
+		             	 <a href=""  ng-click="selectCohortID()"><i class="fa fa-plus-square" aria-hidden="true"></i> Select Cohort ID</a>
+		  		 	  </div>
+		  		 	   <div class="form-group col-sm-1">
+			           </div>
+			         </div>
+			         <div class="form-group col-sm-12">
+			      	  <div class="form-group col-sm-3">
+		                <div class ="textClass"><span>Rule</span></div>
+		              </div>
+		              <div class="form-group col-sm-4">
+		               <div class="form-control" ng-model="selectedRuleID" name="selectedRuleID">{{selectedRuleID}}</div>
+	              	  </div>
+		              <div class="form-group col-sm-4" style = "margin-top:5px">
+		             	<a href="" ng-click="selectRuleID()"><i class="fa fa-plus-square" aria-hidden="true"></i> Select Rule</a>
+	  		 	     </div>
+		  		 	   <div class="form-group col-sm-1">
+			           </div>
+			         </div>
+			         <div class="form-group col-sm-12">
+			      	  <div class="form-group col-sm-3">
+		                <div class ="textClass"><span>Reason</span></div>
+		              </div>
+		              <div class="form-group col-sm-4">
+		                <div class="form-control">{{selectedReasonCode}}</div>
+		              </div>
+		              <div class="form-group col-sm-4" style = "margin-top:5px">
+		             	 <a href=""  ng-click="selectCohortID()"><i class="fa fa-plus-square" aria-hidden="true"></i> Select Reason</a>
+		  		 	  </div>
+		  		 	   <div class="form-group col-sm-1">
+			           </div>
+			         </div>
+	  		  </div>
+	  		  <div class="form-group col-sm-5"  style = "padding-left:0;padding-right:0;">
+	  		  	 <div class="form-group col-sm-12">
+			      	  <div class="form-group col-sm-4">
+		                <div class ="textClass"><span >Comments</span></div>
+		              </div>
+		              <div class="form-group col-sm-8">
+		                <textarea class="form-control" rows="5" cols="30">
+						</textarea> 
+					 </div>
+				 </div>
+				 <div class="form-group col-sm-12">
+			      	  <div class="form-group col-sm-4">
+		                <div class ="textClass"><span >Status</span></div>
+		              </div>
+		              <div class="form-group col-sm-8">
+		                <div class="form-control"  ng-model="status" required  name="status">Staged</div>
+	               </div>
+				 </div>
+	  		  </div>
+	  		  <h5 class = "headingText"><span>Additional Information</span></h5>
+	  		   <div class="form-group col-sm-12">
+              	   <div class="form-group col-sm-1">
+              	   		<div class ="textClass"><span>Date</span></div>
+		           </div>
+	              <div class="form-group col-sm-4">
+	                <div class="form-control" ng-model="currentDate" name="currentDate">{{date | date:'yyyy-MM-dd'}}</div>
+	              </div>
+	              <div class="form-group col-sm-2">
+	              </div>
+	              <div class="form-group col-sm-2">
+	              	<div class ="textClass"><span >Username</span></div>
+	              	
+	              </div>
+	              <div class="form-group col-sm-3">
+	                <div class="form-control"  ng-model="currentUsername" name="currentUsername">{{currentUsername}}</div>
+	              </div>
+              </div>
+               <div class="form-group col-sm-12">
+              	<div class="col-sm-3"></div>
+	            <button type="submit" ng-click="saveRegForm(selectedCohortID,selectedRuleID,selectedReasonCode,selectedClientID,currentDate,currentUsername,sourceSystem,sourceSystemID,firstName,lastName,status,comments)" class="btn btn-default col-sm-2">Save</button>
+	            <div class="col-sm-2"></div>
+	            <button type="reset" ng-click="reset()" class="btn btn-default col-sm-2">Reset</button>
+	            <div class="col-sm-3"></div>
+	          </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+      
+</div>

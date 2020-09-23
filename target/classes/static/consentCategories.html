@@ -1,0 +1,81 @@
+<div class="container" ng-controller="consentCategoriesCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Consent Category Search  </h2>   
+		  <a href="" class="col-sm-2 martop30 txtright" ng-click="newConsentCategory()"><i class="fa fa-plus-square" aria-hidden="true"></i> New Category</a>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Criteria
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="consentGroupForm">
+              <div class="form-group">
+                <label for="consentGroup">Consent Category Name:</label>
+                <input type="text" autocomplete="off" class="form-control" ng-model="consentGroup" required placeholder="Consent Category Name" name="consentGroup">
+              </div>
+              
+              <button type="submit" ng-click="search(consentGroup)" class="btn btn-default" ng-disabled="consentGroupForm.consentGroup.$invalid">Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Consent Category ID</th>
+                  <th>Consent Category Name</th>
+                  <th>Last Updated By</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in myData">
+                  <td class="{{x.consentgroupid}}" data-title="Consent Category Id">{{x.consentgroupid}}</td>
+                  <td class="{{x.consentgroupid}}name" data-title="Consent Category Name"><a ng-click=viewCategoryDetails(x.consentgroupid) style="cursor:pointer;">{{x.name}}</a></td>
+                  <td class="{{x.consentgroupid}}lastupdatedby" data-title="Last Updated By">{{x.lastupdatedby}}
+                    <span style="float:right">
+                      <i style="margin-right:10px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.consentgroupid,x.name)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{x.consentgroupid}}" class="fa fa-times" aria-hidden="true" ng-click="deleteCategory(x.consentgroupid,x.name)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

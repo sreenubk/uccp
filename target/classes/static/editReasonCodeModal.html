@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Reason Code Details</h3>
+</div>
+<form name="editReasonCodeForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="cohortDetail">Reason Code:</label>
+  	<div class="form-control" ng-model="selectedReasonCode" name="selectedReasonCode">{{selectedReasonCode}}</div>
+  </div>
+  <div class="form-group">
+ 	 <label for="cohortDetail">Reason Description:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedReasonDesc"  required placeholder="{{selectedReasonDesc}}" name="selectedReasonDesc" value = "selectedReasonDesc">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-disabled="editReasonCodeForm.$invalid" ng-click="editReasonCodeSave(selectedReasonDesc);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

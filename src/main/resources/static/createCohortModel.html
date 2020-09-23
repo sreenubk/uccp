@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Cohort</h3>
+</div>
+<form name="newCohortForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="cohortName">Cohort Name:<span class="red">*</span></label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="cohortName" required name="cohortName"><br/>
+  <div id="err-cohortName" class="red"></div>
+  <label for="cohortDesc">Cohort Description:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="cohortDesc" required name="cohortDesc">
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="viewCohortName(cohortName,cohortDesc);$close()" ng-disabled="newCohortForm.cohortName.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

@@ -1,0 +1,34 @@
+[
+    {
+        "controlgroupid": 1100,
+        "controlgroupname": "Rohit K",
+        "createdby": "360IBM",
+        "createdon": "2017-10-03",
+        "lastupdatedby": "L360",
+        "lastupdatedon": "2017-10-03"
+    },
+    {
+        "controlgroupid": 100,
+        "controlgroupname": "Rohit K",
+        "createdby": "360IBM",
+        "createdon": "2017-10-04",
+        "lastupdatedby": "L360",
+        "lastupdatedon": "2017-10-04"
+    },
+    {
+        "controlgroupid": 106,
+        "controlgroupname": "Sri",
+        "createdby": "360IBM",
+        "createdon": "2017-10-05",
+        "lastupdatedby": "L360",
+        "lastupdatedon": "2017-10-05"
+    },
+    {
+        "controlgroupid": 107,
+        "controlgroupname": "Group1",
+        "createdby": null,
+        "createdon": null,
+        "lastupdatedby": "Rohit",
+        "lastupdatedon": "2017-10-05"
+    }
+] 

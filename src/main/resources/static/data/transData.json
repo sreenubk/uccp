@@ -1,0 +1,13 @@
+[
+    {
+        "transactionid": 6774,
+        "transactiontype": "ttt32ge",
+	        "transactionname": "AMPLE",
+	        "defaultaccess": "Allow",
+	        "createdby": "sysadmin",
+	        "createdon": "2017-10-03",
+	        "lastupdatedby": "L360",
+	        "lastupdatedon":"2017-10-03",
+	        "versionno":"1"
+    }
+]

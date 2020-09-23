@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Cohort Target Details</h3>
+</div>
+<form name="editCohortTargetForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="targetDetail">Cohort ID:</label>
+  	<select class="form-control" id="cohortID" ng-model="selectedCohortId"  required name="newCohortID">
+        <option value="{{x.cohortid}}"  ng-selected = "{{selectedCohortId}}"></option>
+        <option ng-repeat="x in myCohortData" >{{x.cohortid}}</option>
+		</option>
+  	</select>
+   </div>
+  <div class="form-group">
+  	<label for="targetDetail">Name:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedCohTargetName"  required placeholder="{{selectedCohTargetName}}" name="newCohTargetName">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editCohTargetSave(selectedCohortId,selectedCohTargetName);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

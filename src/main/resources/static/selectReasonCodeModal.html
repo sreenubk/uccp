@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h3 class="modal-title">View Reason Code</h3>
+</div>
+<form name="selectCohortForm">
+<div class="modal-body">
+<div class="form-group">
+  <div class="panel panel-default">
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Reason Code</th>
+                  <th>Reason Description</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-model = "selectedReasonCode">
+                  <td class="{{x.reasonCode}}reasonCode" data-title="Reason Code" value = "x.reasonCode" name = "clientIdselected">{{selReasonCodeData.reasonCode}}</td>
+                  <td class="{{x.reasonCode}}reasonDesc" data-title="Reason Description">{{selReasonCodeData.reasonDesc}}
+                 
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+</div>
+</div>
+
+
+<div class="modal-footer">
+	<button class="btn btn-warning" type="button" ng-click="$close()">Ok</button>
+</div>
+
+</form>
+
+

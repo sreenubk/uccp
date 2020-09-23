@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Approve Request</h3>
+</div>
+<form name="approveRequestForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="reasonCode">Request ID:</label>
+  <div class="form-control" ng-model="selectedReqID" required name="reqID">{{selectedReqID}}</div><br/>
+  <!-- label for="reasonDesc">Status Date:</label>
+  <div class="form-control" ng-model="statusDate" required name="statusDate">{{date | date:'yyyy-MM-dd'}}</div><br/>
+  <label for="reasonDesc">Status User:</label>
+  <div class="form-control" ng-model="statusUser" required name="statusUser">{{currentUsername}}</div><br/> -->
+  <label for="reasonDesc">Status Comments:</label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="statusComment" required name="statusComment"><br/>
+  <label for="reasonDesc">Status:</label>
+  <div class="form-control" ng-model="statusMessage" required name="statusMessage">PENDING INTERFACE</div>
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="approveReqData(selectedReqID,statusDate,statusUser,statusComment,statusMessage);$close()" ng-disabled="approveRequestForm.reqID.$invalid">Approve</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

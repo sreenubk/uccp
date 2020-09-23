@@ -1,0 +1,90 @@
+<div class="container" ng-controller="entityResultsCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Entity Results</h2>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Entity Results 
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+	        <div class="cards col-sm-12">
+
+					<div class="personDetailCard col-sm-5" ng-repeat="x in personData"
+						ng-click = "selectPersonCard(x.idEntity.entityId.enterpriseId)" style="cursor:pointer;">
+						<div class="personCard col-sm-12">
+							<div class="personDetCard col-sm-12">
+							
+								<div class = "cardHeadText">
+									<h5 ng-modal="getCustName"
+										ng-repeat="y in x.idEntity.client.clientNameList.clientName">
+										<b>{{y.firstName + " " + y.lastName}}</b>
+									</h5>
+								</div>
+								
+								<p ng-modal="getDOB"
+									ng-repeat="y in x.idEntity.client.dateofBirthList.dateofBirth">
+									<b>Date of Birth: </b>{{y.dateVal}}
+								</p>
+								<p ng-modal="getAddress"
+									ng-repeat="y in x.idEntity.client.homeAddressList.homeAddress">
+									<b>Address: </b>{{y.streetLine1 + " " + y.streetLine2 + " " +
+									y.streetLine3 + " " + y.streetLine4}}
+								</p>
+								</div>
+								<div class="personDetCard col-sm-6">
+									<p ng-modal="getCity"
+										ng-repeat="y in x.idEntity.client.homeAddressList.homeAddress">
+										<b>City: </b>{{y.city}}
+									</p>
+									<p ng-modal="getState"
+										ng-repeat="y in x.idEntity.client.homeAddressList.homeAddress">
+										<b>State: </b>{{y.state}}
+									</p>
+									<p ng-modal="getZip"
+										ng-repeat="y in x.idEntity.client.homeAddressList.homeAddress">
+										<b>Zip: </b>{{y.zipCode}}
+									</p>
+									<p ng-modal="getPhone"
+										ng-repeat="y in x.idEntity.client.homePhoneList.homePhone">
+										<b>Phone: </b>{{y.phNumber}}
+									</p>
+									<p ng-modal="getEmail"
+										ng-repeat="y in x.idEntity.client.primaryEmailAddressList.primaryEmailAddress">
+										<b>Email: </b>{{y.attrVal}}
+									</p>
+
+							</div>
+							<div class=" personScoreCard col-sm-3">
+								<p ng-modal="getMatchScore">
+									<b>{{matchScore}}</b>
+								</p>
+							</div>
+							<div class=" personScoreText col-sm-3">
+								<p ng-modal="getMatchScore">
+									match score
+								</p>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+  

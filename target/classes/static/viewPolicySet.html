@@ -1,0 +1,95 @@
+<div class="container" ng-controller="viewPolicySetCtrl">
+
+      
+      <div class="row toprow">
+		  <h2 class="col-sm-9">View Policy Set  </h2>   
+		  <a href="" class="col-sm-3 martop30 txtright"  ng-click="addAuthorisation()"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Authorization Group</a>
+	  </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row">
+              	<div class="col-sm-4">
+	                <label for="ctrlGroup" class="col-sm-12">Policy Set Name: 
+	                <span ng-if="existingGroup==true">{{addPolicy.policyset.name}}</span><span ng-if="existingGroup==false">{{addPolicy.name}}</span>
+	                </label>
+	                <label for="ctrlGroup" class="col-sm-12">Consent: 
+	                <span ng-if="existingGroup==true">{{addPolicy.policyset.consentstatus}}</span><span ng-if="existingGroup==false">{{addPolicy.consentstatus}}</span>
+	                </label>
+                </div>
+                <div class="col-sm-4">
+                	<label for="ctrlGroup" class="col-sm-12">Created By: 
+                	<span ng-if="existingGroup==true">{{addPolicy.policyset.createdby}}</span><span ng-if="existingGroup==false">{{addPolicy.createdby}}</span>
+                	</label>
+                	<!-- <label for="ctrlGroup" class="col-sm-12">Classification Level: 
+	                <span ng-if="existingGroup==true">{{addPolicy.policyset.classificationlevel}}</span><span ng-if="existingGroup==false">{{addPolicy.classificationlevel}}</span>
+	                </label> -->
+                </div>
+                <div class="col-sm-4">
+                	<label for="ctrlGroup" class="col-sm-12">Last Updated By: 
+                	<span ng-if="existingGroup==true">{{addPolicy.policyset.lastupdatedby}}</span><span ng-if="existingGroup==false">{{addPolicy.lastupdatedby}}</span>
+                	</label>
+                	<!--<label for="ctrlGroup" class="col-sm-12">Transaction Type: 
+	                <span ng-if="existingGroup==true">{{addPolicy.policyset.transactionType}}</span><span ng-if="existingGroup==false">{{addPolicy.transactionType}}</span>
+	                </label> -->
+                </div>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Authorization Groups
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="authTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Authorization Group Name</th>
+                  <th>Control Group Name</th>
+                  <th>Organization Unit</th>
+                  <th>Role</th>
+                  <th>Job Name</th>
+                  <th>Username</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="authBody">
+            
+              </tbody>
+            </table>
+            
+                  
+          </div>
+        </div>
+      </div><!-- /Auth -->
+
+
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

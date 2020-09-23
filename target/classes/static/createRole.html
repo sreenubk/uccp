@@ -1,0 +1,81 @@
+<div class="container" ng-controller="createRoleCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-6">Role</h2>  
+		  <a href="#!createUser" class="col-sm-2 martop30 txtright" ng-click="viewRole()"><i class="fa fa-plus-square" aria-hidden="true"></i> User</a>
+	  	  <a href="#!createOrganization" class="col-sm-2 martop30 txtright" ng-click="viewRole()"><i class="fa fa-plus-square" aria-hidden="true"></i> Organization</a>
+	    <a href="" class="col-sm-2 martop30 txtright" ng-click="viewRole()"><i class="fa fa-plus-square" aria-hidden="true"></i> New Role</a>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Role 
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="RoleForm">
+              <div class="form-group">
+                <label for="RoleDetail">Role Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="roleName" placeholder="Role Name" name="RoleDetail">
+              </div>
+              
+              <button type="submit" ng-click="searchRole(roleName)" class="btn btn-default">Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Role Name</th>
+                  <th>Role Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in roleDataEntry">
+                <td class="{{x.rolename}}rolename" data-title="Role Name">{{x.rolename}}</td>
+                 <td class="{{x.rolename}}orgname" data-title="Role Description">{{x.orgname}}</td>
+                   <td> <span>
+                      <i style="margin-right:5px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.rolename,x.orgname)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{x.rolename}}" class="fa fa-times" aria-hidden="true" ng-click="deleteRole(x.rolename)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /RoleCtrl -->
+

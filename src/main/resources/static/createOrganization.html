@@ -1,0 +1,85 @@
+<div class="container" ng-controller="createOrganizationCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-6">Organization</h2>  
+		  <a href="#!createUser" class="col-sm-2 martop30"><i class="fa fa-plus-square" aria-hidden="true"></i> User</a>
+	      <a href="#!createRole" class="col-sm-2 martop30"><i class="fa fa-plus-square" aria-hidden="true"></i> Role</a>
+	      <a href="" class="col-sm-2 martop30" ng-click="viewOrganization()"><i class="fa fa-plus-square" aria-hidden="true"></i> New Organization</a>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Organization 
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="OrganizationForm">
+              <div class="form-group">
+                <label for="organizationDetail">Organization Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="organizationName" placeholder="Organization Name" name="organizationDetail">
+              </div>
+              
+              <button type="submit" ng-click="searchOrganization(organizationName)" class="btn btn-default">Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Organization Name</th>
+                  <th>Description</th>
+                  <th>Created By</th>
+                  <th>Created On</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in organizationData">
+                  <td class="{{x.organisationunitid}}name" data-title="Organization Name">{{x.name}}</td>
+                  <td class="{{x.organisationunitid}}business" data-title="Description">{{x.businesstypecode}}</td>
+                  <td class="{{x.organisationunitid}}createdBy" data-title="Created By">{{x.createdby}}</td>
+                  <td class="{{x.organisationunitid}}createdOn" data-title="Created On">{{x.createdby}}</td>
+                   <td> <span>
+                      <i style="margin-right:5px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.organisationunitid,x.name,x.businesstypecode)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{x.organisationunitid}}" class="fa fa-times" aria-hidden="true" ng-click="deleteOrganization(x.organisationunitid,x.name)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /OrganizationCtrl -->
+

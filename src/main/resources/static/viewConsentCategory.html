@@ -1,0 +1,115 @@
+<div class="container" ng-controller="viewConsentCategoryCtrl">
+      
+      <div class="row toprow">
+		  <h2 class="col-sm-9">View Consent Category </h2>   
+		 <!-- <a href="" class="col-sm-3 martop30 txtright"  ng-click="addTransaction()"><i class="fa fa-plus-square" aria-hidden="true"></i> Add Transaction</a> --> 
+		  <a href="" class="col-sm-3 martop30 txtright"  ng-click="useExistTransaction()"><i class="fa fa-plus-square" aria-hidden="true"></i> Associate Transaction to Consent</a>
+	  </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body" ng-if="existingCategoryGroup==true">
+           
+              <div class="row">
+                <label for="ctrlGroup" class="col-sm-6">Consent Category Name: {{addCategory.consentGroup.name}}</label>
+                <label for="ctrlGroup" class="col-sm-6">Created By: {{addCategory.consentGroup.createdby}}</label>
+              </div>
+              <div class="row">
+                <label for="ctrlGroup" class="col-sm-6">Consent Category Description: {{addCategory.consentGroup.description}}</label>
+                <label for="ctrlGroup" class="col-sm-6">Last Updated By: {{addCategory.consentGroup.lastupdatedby}}</label>
+          	  </div>
+          </div>
+          <div class="panel-body" ng-if="existingCategoryGroup==false">
+           
+              <div class="row">
+                <label for="ctrlGroup" class="col-sm-6">Consent Category Name: {{addCategory.name}}</label>
+                <label for="ctrlGroup" class="col-sm-6">Created By: {{addCategory.createdby}}</label>
+              </div>
+              <div class="row">
+                <label for="ctrlGroup" class="col-sm-6">Consent Category Description: {{addCategory.description}}</label>
+                <label for="ctrlGroup" class="col-sm-6">Last Updated By: {{addCategory.lastupdatedby}}</label>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Transactions
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th></th>
+                  <th>Transaction Name</th>
+                  <th>Transaction Type</th>
+                  <th>Default Access Type</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="tranBody">
+           
+              </tbody>
+            </table>
+            
+                  
+          </div>
+        </div>
+      </div><!-- /Transactions -->
+
+	<!-- 
+      <div class="panel panel-default">
+        <div class="panel-heading">Control Groups
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>	
+                  <th>Control Group Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in myData">
+                  <td data-title="Control Group Name">{{x.controlgroupname}}
+                   
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> --><!-- /Control Groups -->
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+
+
+

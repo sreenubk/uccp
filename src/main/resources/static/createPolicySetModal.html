@@ -1,0 +1,39 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Policy Set</h3>
+</div>
+<form name="newPolicySetForm">
+<div class="modal-body">
+	<div class="form-group">
+	  <label for="policySetName">Policy Set Name:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="policySetName" required name="policySetName">
+	</div>
+	<div class="form-group">
+		  <label for="ctrlGroup">Consent Status:</label>
+		  <select class="form-control" id="consentStatus" ng-model="consentStatus"  required name="consentStatus">
+		  		<option value="">Choose</option>
+		        <option value="yes">Yes</option>
+		        <option value="no">No</option>
+		  </select>
+	</div>
+	 <!-- <div class="form-group">
+	  <label for="classificationLevel">Classification Level:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="classificationLevel"  name="classificationLevel">
+	</div>
+	<div class="form-group">
+	  <label for="classificationLevel">Transaction Type:</label>
+	  <input type="text" autocomplete="off" class="form-control" ng-model="transactionType"  name="transactionType">
+	</div>  -->
+	
+	<div class="form-group">
+	  <label for="comments">Comments:</label>
+	  <textarea rows="4" autocomplete="off" cols="50" class="form-control" ng-model="comments"  name="comments"></textarea> 
+	</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="savePolicySet(consentStatus,classificationLevel,comments,policySetName,transactionType);$close()" ng-disabled="newPolicySetForm.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

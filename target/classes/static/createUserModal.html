@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create User</h3>
+</div>
+<form name="newUserForm">
+	<div class="modal-body">
+		<div class="form-group">
+		  <label for="jobName">User Name:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="userName" required name="userName"><br/>
+		  <label for="roleName">Role Name:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="roleName" required name="roleName"><br/>
+		  <label for="jobName">Job Name:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="jobName" required name="jobName"><br/>
+		  <label for="roleLevel">First Name:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="fName" required name="fName"><br/>
+		  <label for="roleLevel">Last Name:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="lName" required name="lName"><br/>
+		  <label for="orgName">Organization Name:<span class="red">*</span></label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="orgName" required name="orgName"><br/>
+		  <div id="err-orgName" class="red"></div>
+		   <label for="roleLevel">Role Level:</label>
+		  <input type="text" autocomplete="off" class="form-control" ng-model="roleLevel" required name="roleLevel"><br/>
+		 <label for="roleLevel">Email ID:</label>
+		  <input type="email" autocomplete="off" class="form-control" ng-model="emailID" required name="emailID"><br/>
+		  
+		</div>
+	</div>
+	<div class="modal-footer">
+	     <button class="btn btn-primary" type="submit" ng-click="viewUserName(userName,roleName,jobName,fName,lName,orgName,roleLevel,emailID);$close()" ng-disabled="newUserForm.userName.$invalid">Save</button>
+	     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+	</div>
+
+</form>

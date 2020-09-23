@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title">Edit Job Details</h3>
+</div>
+<form name="editJobForm">
+<div class="modal-body">
+  <div class="form-group">
+  	<label for="jobDetail">Job Name:<span class="red">*</span></label>
+  	<div class="form-control" ng-model="selectedJobName"  required name="newJob">{{selectedJobName}}</div>
+  </div>
+  <div class="form-group">
+  	<label for="jobDetail">Description:</label>
+  	<input type="text" autocomplete="off" class="form-control" ng-model="selectedJobDesc"  required placeholder="{{selectedJobDesc}}" name="newJobDesc">
+  </div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click="editJobSave(selectedJobName,selectedJobDesc);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

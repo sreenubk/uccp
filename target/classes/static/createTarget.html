@@ -1,0 +1,85 @@
+<div class="container" ng-controller="createTargetCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Target</h2>   
+		  <a href="" class="col-sm-2 martop30 txtright" ng-click="viewTarget()"><i class="fa fa-plus-square" aria-hidden="true"></i> New Target</a>
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Target 
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="cohertForm">
+              <div class="form-group">
+                <label for="targetDetail">Target Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="targetDetail" placeholder="Target Name" name="targetDetail">
+              </div>
+              
+              <button type="submit" ng-click="search(targetDetail)" class="btn btn-default">Search</button>
+              <button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Search Results
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Target Name</th>
+                  <th>Target Address</th>
+                  <th>Target Alternate Address</th>
+                  <th>Target Description</th>
+                  <th>Actions</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in myData">
+					<td class="{{x.targetedID}}targetName" data-title="Target Name"><a ng-click=viewTargetDetails(x.targetedID) style="cursor:pointer;">{{x.targetName}}</a></td>
+					<td class="{{x.targetedID}}targetAddress" data-title="Target Address">{{x.targetAddress}}</td>
+					<td class="{{x.targetedID}}targetAltAddress" data-title="Target Alternate Address">{{x.targetAltAddress}}</td>
+					<td class="{{x.targetedID}}targetDescription" data-title="Target Description">{{x.targetDescription}}</td>
+					<td data-title="Actions">
+	 					<span>
+	                      <i style="margin-right:10px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(x.targetedID,x.targetName,x.targetAddress,x.targetAltAddress,x.targetDescription)"></i>
+	                      <i  style="cursor:pointer;" title="Delete" id="{{x.targetedID}}" class="fa fa-times" aria-hidden="true" ng-click="deleteTarget(x.targetedID,x.targetName)"></i>
+	                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

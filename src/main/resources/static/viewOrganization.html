@@ -1,0 +1,82 @@
+<div class="container" ng-controller="viewOrganizationCtrl">
+
+      
+      <div class="row toprow">
+		  <h2 class="col-sm-3">View Organization  </h2>  
+	  </div>
+	  
+	  <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Details
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+           
+              <div class="row">
+                <label for="OrganizationDetail" class="col-sm-4">Organization Name: {{addOrganization.name}}</label>
+                <label for="OrganizationDetail" class="col-sm-4">Description: {{addOrganization.businesstypecode}}</label>
+          	  </div>
+          </div>
+        </div>
+      </div> <!-- /Details -->
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Organization Details
+          
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table id="transTable" class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Organization Name</th>
+                  <th>Description</th>
+                  <th>Created By</th>
+                  <th>Created On</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                <td class="{{addOrganization.organisationunitid}}name" data-title="Organization Name">{{addOrganization.name}}</td>
+                 <td class="{{addOrganization.organisationunitid}}business" data-title="Description">{{addOrganization.businesstypecode}}</td>
+                 <td class="{{addOrganization.organisationunitid}}createdby" data-title="Created By">{{addOrganization.createdby}}</td>
+                 <td class="{{addOrganization.organisationunitid}}createdon" data-title="Created On">{{addOrganization.createdon}}</td>
+                   <td> <span>
+                      <i style="margin-right:5px;cursor:pointer;"  title="Edit" class="fa fa-pencil-square-o" aria-hidden="true" ng-click="open(addOrganization.organisationunitid,addOrganization.name,addOrganization.businesstypecode)"></i>
+                      <i  style="cursor:pointer;" title="Delete" id="{{addUser.Userid}}" class="fa fa-times" aria-hidden="true" ng-click="deleteOrganization(addOrganization.organisationunitid,addOrganization.name)"></i>
+                    </span>
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+            
+                  
+          </div>
+        </div>
+      </div><!-- /Transactions -->
+         
+      </div><!-- /Transactions -->
+
+
+     
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

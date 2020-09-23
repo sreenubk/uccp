@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h3 class="modal-title">Add Existing Transaction</h3>
+</div>
+<form name="newTranForm">
+<div class="modal-body">
+	<!-- <div class="form-group">
+		  <label for="ctrlGroup">Select Control Groups:</label>
+		  <select class="form-control" id="ControupNames" required ng-change="getTranData(ControupNames)" ng-model="ControupNames"  name="ControupNames">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in groupNames" value="{{x.controlgroupid}}">{{x.controlgroupname}}</option>
+		 </select>
+	</div> -->
+	<div class="form-group">
+		  <label for="ctrlGroup">Select Transaction:</label>
+		  <select class="form-control" id="conTranData" required ng-model="conTranData"  name="conTranData">
+		  		<option value="">Choose</option>
+		        <option  ng-repeat="x in existTranDataNew" value="{{x.transactionid}},{{x.transactionname}},{{x.transactiontype}},{{x.defaultaccess}}">{{x.transactionname}}</option>
+		 </select>
+	</div>
+	
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-disabled="newTranForm.$invalid" ng-click="useExistCategoryTransactionSave(ControupNames,conTranData);$close()">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>

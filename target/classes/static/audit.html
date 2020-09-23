@@ -1,0 +1,107 @@
+<div class="container" ng-controller="auditCtrl">
+
+      <div class="row toprow">
+		  <h2 class="col-sm-10">Audit Report Data</h2>   
+		  
+	  </div>
+     
+     <div class="row toprow">
+     	<div class="alert alert-success alert-dismissable" ng-if="sucessMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{sucessMsg}}
+		</div>
+		<div class="alert alert-danger alert-dismissable" ng-if="errorMsg">
+		    <a href="" class="close" data-dismiss="alert" aria-label="close">x</a>
+		    {{errorMsg}}
+		</div>
+     </div>
+     
+     
+     <div class="panel panel-default">
+        <div class="panel-heading">Audit Search Criteria
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo" class="collapse in">
+          <div class="panel-body">
+            <form name="auditSearchForm">
+              <div class="form-group col-sm-6">
+                <label for="ctrlGroup">User Name:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="userName"  placeholder="User Name" name="UserName">
+              </div>
+              
+              <div class="form-group col-sm-6">
+                <label for="ctrlGroup">Source System:</label>
+                <input type="text" autocomplete="off" class="form-control" autocomplete="off" ng-model="sourceSystem"  placeholder="Source System" name="sourceSystem">
+              </div>
+              
+              <div class="form-group col-sm-6">
+                <label for="ctrlGroup">Api Switch:</label>
+                <select class="form-control" id="apiswitcch" ng-model="apiswitcch"  name="apiswitcch">
+				  		<option value="">null</option>
+				        <option value="both">Both</option>
+				        <option value="consent">Consent</option>
+				        <option value="policy">Policy</option>
+                <option value="BTG">BTG</option>
+				 </select>
+              </div>
+              
+              <div class="form-group col-sm-12">
+              	<button type="submit" ng-click="search(userName,sourceSystem,apiswitcch)" class="btn btn-default" >Search</button>
+              	<button type="reset" ng-click="reset()" class="btn btn-default">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> <!-- /Search Criteria -->
+     
+
+       <div class="panel panel-default">
+        <div class="panel-heading">Audit Report Data
+          <button class="btn btn-box-right collapsed" data-toggle="collapse" href="#demo2" >
+              <i class=" fa fa-expand"></i>
+          </button>
+        </div>
+         <div id="demo2" class="collapse in">
+          <div class="panel-body" id="no-more-tables">
+
+            <table class="table-bordered table-striped table-condensed cf results">
+              <thead class="cf">
+                <tr>
+                  <th>Audit ID</th>
+                  <th>UserName</th>
+                  <th>Client ID</th>
+                  <th>Source System</th>
+                  <th>Transaction Name</th>
+                  <th>Apiswitch</th>
+                  <th>RequestDt</th>
+                  <th>Result</th>
+                  <th>Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="x in auditData">
+                  <td class="authID" data-title="authID">{{x.authID}}</td>
+                  <td class="userName" data-title="userName">{{x.userName}}</td>
+                  <td class="clientID" data-title="clientID">{{x.clientID}}</td>
+                  <td class="srcSystem" data-title="srcSystem">{{x.srcSystem}}</td>
+                  <td class="transName" data-title="transName">{{x.transName}}</td>
+                  <td class="apiSwith" data-title="apiSwith">{{x.apiSwith}}</td>
+                  <td class="requestDt" data-title="requestDt">{{x.strrequestDt}}</td>
+                  <td class="result" data-title="result">{{x.result}}</td>
+                  <td class="reason" data-title="reason">{{x.accessReason}}</td>
+                </tr>
+               
+              </tbody>
+            </table>
+                        
+
+          </div>
+        </div>
+      </div><!-- /Search Results -->
+
+
+
+</div> <!-- /container /controlGroupCtrl -->
+

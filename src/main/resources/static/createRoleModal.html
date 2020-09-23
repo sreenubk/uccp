@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h3 class="modal-title">Create Role</h3>
+</div>
+<form name="newRoleForm">
+<div class="modal-body">
+<div class="form-group">
+  <label for="orgName">Role Name:<span class="red">*</span></label>
+  <input type="text" autocomplete="off" class="form-control" ng-model="roleName" required name="roleName"><br/>
+  <div id="err-orgName" class="red"></div>
+   <label for="ctrlGroup">Role Description:</label>
+   		<input type="text" autocomplete="off" class="form-control" ng-model="orgName" required name="orgName"><br/>
+    <!--select class="form-control" id="orgName" ng-model="orgName"  name="orgName">
+       <option disabled selected value>Choose</option>
+       <option  ng-repeat="x in orgUnits" value="{{x.name}}">{{x.name}}</option>
+    </select--><br/>
+  
+</div>
+</div>
+
+
+<div class="modal-footer">
+     <button class="btn btn-primary" type="submit" ng-click="viewRoleName(roleName,orgName);$close()" ng-disabled="newRoleForm.roleName.$invalid">Save</button>
+     <button class="btn btn-warning" type="button" ng-click="$close()">Cancel</button>
+</div>
+
+</form>
